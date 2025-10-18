@@ -8,6 +8,7 @@ import Services from "./components/Services";
 import Single from "./components/Single";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
+import Admin from "./components/Admin";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/single" element={<Single />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
         <Footer />
       </Router>
