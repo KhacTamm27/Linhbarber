@@ -1,0 +1,331 @@
+{
+  "timestamp": "2025-10-18T06:40:42.592Z",
+  "database": "hair-salon",
+  "collections": {
+    "services": [
+      {
+        "_id": "68f32d76f1749bfd6b87fe9d",
+        "name": "Cắt tóc",
+        "description": "Chúng tôi cung cấp các dịch vụ cắt tóc chuyên nghiệp với nhiều kiểu tóc khác nhau.",
+        "image": "https://tamanh.net/wp-content/uploads/2023/04/kieu-dau-cat-moi.jpg",
+        "price": null,
+        "category": "haircut",
+        "isActive": true,
+        "order": 1,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.030Z",
+        "updatedAt": "2025-10-18T06:30:09.239Z"
+      },
+      {
+        "_id": "68f32d76f1749bfd6b87fe9e",
+        "name": "Cạo râu",
+        "description": "Dịch vụ cạo râu chuyên nghiệp với các sản phẩm chất lượng cao.",
+        "image": "assets/images/services1.jpg",
+        "price": null,
+        "category": "beard",
+        "isActive": true,
+        "order": 2,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.031Z",
+        "updatedAt": "2025-10-18T06:02:30.031Z"
+      },
+      {
+        "_id": "68f32d76f1749bfd6b87fe9f",
+        "name": "Nhuộm tóc",
+        "description": "Dịch vụ nhuộm tóc chuyên nghiệp để tạo ra kiểu tóc hoàn hảo.",
+        "image": "assets/images/ser3.jpg",
+        "price": null,
+        "category": "coloring",
+        "isActive": true,
+        "order": 3,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.031Z",
+        "updatedAt": "2025-10-18T06:02:30.031Z"
+      },
+      {
+        "_id": "68f32d76f1749bfd6b87fea0",
+        "name": "Gội đầu",
+        "description": "Dịch vụ gội đầu chuyên nghiệp với các sản phẩm chất lượng cao.",
+        "image": "assets/images/ser4.jpg",
+        "price": null,
+        "category": "other",
+        "isActive": true,
+        "order": 4,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.031Z",
+        "updatedAt": "2025-10-18T06:02:30.031Z"
+      },
+      {
+        "_id": "68f32d76f1749bfd6b87fea1",
+        "name": "Sấy tóc",
+        "description": "Dịch vụ sấy tóc chuyên nghiệp để tạo ra kiểu tóc hoàn hảo.",
+        "image": "assets/images/ser5.jpg",
+        "price": null,
+        "category": "styling",
+        "isActive": true,
+        "order": 5,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.032Z",
+        "updatedAt": "2025-10-18T06:02:30.032Z"
+      },
+      {
+        "_id": "68f32d76f1749bfd6b87fea2",
+        "name": "Uốn tóc",
+        "description": "Dịch vụ uốn tóc chuyên nghiệp để tạo ra kiểu tóc hoàn hảo.",
+        "image": "assets/images/ser6.jpg",
+        "price": null,
+        "category": "styling",
+        "isActive": true,
+        "order": 6,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.032Z",
+        "updatedAt": "2025-10-18T06:02:30.032Z"
+      }
+    ],
+    "prices": [
+      {
+        "_id": "68f33065b86b94782f9368ed",
+        "category": "haircut",
+        "name": "Cắt Tóc",
+        "price": 35000,
+        "description": "",
+        "isActive": true,
+        "order": 0,
+        "createdAt": "2025-10-18T06:15:01.944Z",
+        "updatedAt": "2025-10-18T06:17:30.920Z",
+        "__v": 0
+      },
+      {
+        "_id": "68f3307ab86b94782f9368f0",
+        "category": "other",
+        "name": "Roáy Tai",
+        "price": 25000,
+        "description": "",
+        "isActive": true,
+        "order": 0,
+        "createdAt": "2025-10-18T06:15:22.042Z",
+        "updatedAt": "2025-10-18T06:17:48.668Z",
+        "__v": 0
+      },
+      {
+        "_id": "68f33088b86b94782f9368f3",
+        "category": "other",
+        "name": "Cạo Mặt",
+        "price": 10000,
+        "description": "",
+        "isActive": true,
+        "order": 0,
+        "createdAt": "2025-10-18T06:15:36.898Z",
+        "updatedAt": "2025-10-18T06:17:52.698Z",
+        "__v": 0
+      },
+      {
+        "_id": "68f330b8b86b94782f9368fc",
+        "category": "other",
+        "name": "Lột Mụn",
+        "price": 15000,
+        "description": "",
+        "isActive": true,
+        "order": 0,
+        "createdAt": "2025-10-18T06:16:24.385Z",
+        "updatedAt": "2025-10-18T06:17:56.577Z",
+        "__v": 0
+      },
+      {
+        "_id": "68f334478176869282625e48",
+        "category": "other",
+        "name": "Mặt Nạ Trái Cây",
+        "price": 15000,
+        "description": "",
+        "isActive": true,
+        "order": 0,
+        "createdAt": "2025-10-18T06:31:35.872Z",
+        "updatedAt": "2025-10-18T06:31:35.872Z",
+        "__v": 0
+      },
+      {
+        "_id": "68f334658176869282625e4c",
+        "category": "other",
+        "name": "Gội Đầu",
+        "price": 15000,
+        "description": "",
+        "isActive": true,
+        "order": 0,
+        "createdAt": "2025-10-18T06:32:05.109Z",
+        "updatedAt": "2025-10-18T06:32:05.109Z",
+        "__v": 0
+      }
+    ],
+    "testimonials": [
+      {
+        "social": {
+          "facebook": "#",
+          "twitter": "#"
+        },
+        "_id": "68f32d76f1749bfd6b87feb2",
+        "name": "Abraham Smith",
+        "comment": "Dịch vụ cắt tóc ở đây thật tuyệt vời! Thợ cắt tóc rất chuyên nghiệp và tận tâm. Tôi rất hài lòng với kết quả.",
+        "image": "assets/images/test1.jpg",
+        "rating": 5,
+        "page": "home",
+        "isActive": true,
+        "order": 1,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.164Z",
+        "updatedAt": "2025-10-18T06:02:30.164Z"
+      },
+      {
+        "social": {
+          "facebook": "#",
+          "twitter": "#"
+        },
+        "_id": "68f32d76f1749bfd6b87feb3",
+        "name": "Mariana Noe",
+        "comment": "Salon này có không gian rất đẹp và thoải mái. Nhân viên phục vụ rất nhiệt tình và chuyên nghiệp.",
+        "image": "assets/images/test2.jpg",
+        "rating": 5,
+        "page": "home",
+        "isActive": true,
+        "order": 2,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.164Z",
+        "updatedAt": "2025-10-18T06:02:30.164Z"
+      },
+      {
+        "social": {
+          "facebook": "#",
+          "twitter": "#"
+        },
+        "_id": "68f32d76f1749bfd6b87feb4",
+        "name": "Nebula Nairobi",
+        "comment": "Kiểu tóc mà tôi được cắt ở đây thật hoàn hảo! Tôi sẽ quay lại lần nữa và giới thiệu cho bạn bè.",
+        "image": "assets/images/test3.jpg",
+        "rating": 5,
+        "page": "home",
+        "isActive": true,
+        "order": 3,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.164Z",
+        "updatedAt": "2025-10-18T06:02:30.164Z"
+      },
+      {
+        "social": {
+          "facebook": "#",
+          "twitter": "#"
+        },
+        "_id": "68f32d76f1749bfd6b87feb5",
+        "name": "Chương Minh",
+        "comment": "Dịch vụ cắt tóc ở đây thật tuyệt vời! Thợ cắt tóc rất chuyên nghiệp và tận tâm. Tôi rất hài lòng với kết quả.",
+        "image": "assets/images/test1.jpg",
+        "rating": 5,
+        "page": "services",
+        "isActive": true,
+        "order": 1,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.164Z",
+        "updatedAt": "2025-10-18T06:02:30.164Z"
+      },
+      {
+        "social": {
+          "facebook": "#",
+          "twitter": "#"
+        },
+        "_id": "68f32d76f1749bfd6b87feb6",
+        "name": "Văn Đức",
+        "comment": "Salon này có không gian rất đẹp và thoải mái. Nhân viên phục vụ rất nhiệt tình và chuyên nghiệp.",
+        "image": "assets/images/test2.jpg",
+        "rating": 5,
+        "page": "services",
+        "isActive": true,
+        "order": 2,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.164Z",
+        "updatedAt": "2025-10-18T06:02:30.164Z"
+      },
+      {
+        "social": {
+          "facebook": "#",
+          "twitter": "#"
+        },
+        "_id": "68f32d76f1749bfd6b87feb7",
+        "name": "Thắng Nguyễn",
+        "comment": "Kiểu tóc mà tôi được cắt ở đây thật hoàn hảo! Tôi sẽ quay lại lần nữa và giới thiệu cho bạn bè.",
+        "image": "assets/images/test3.jpg",
+        "rating": 5,
+        "page": "services",
+        "isActive": true,
+        "order": 3,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.164Z",
+        "updatedAt": "2025-10-18T06:02:30.164Z"
+      }
+    ],
+    "banners": [
+      {
+        "_id": "68f32d76f1749bfd6b87feb9",
+        "title": "Chúng Tôi Tạo Ra Và Cải Tiến Xu Hướng Tóc",
+        "description": "Chúng tôi chuyên tạo ra những kiểu tóc mới nhất và cải tiến các xu hướng tóc hiện đại. Với kinh nghiệm nhiều năm trong ngành.",
+        "backgroundClass": "bg1",
+        "backgroundImage": "",
+        "ctaText": "Liên hệ ngay",
+        "ctaLink": "tel:+84395284436",
+        "isActive": true,
+        "order": 1,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.225Z",
+        "updatedAt": "2025-10-18T06:02:30.225Z"
+      },
+      {
+        "_id": "68f32d76f1749bfd6b87feba",
+        "title": "Chúng Tôi Giúp Tóc Và Râu Phát Triển Tốt",
+        "description": "Chúng tôi cung cấp các dịch vụ chăm sóc tóc và râu chuyên nghiệp, giúp tóc và râu của bạn phát triển khỏe mạnh và đẹp.",
+        "backgroundClass": "bg2",
+        "backgroundImage": "",
+        "ctaText": "Liên hệ ngay",
+        "ctaLink": "tel:+84395284436",
+        "isActive": true,
+        "order": 2,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.225Z",
+        "updatedAt": "2025-10-18T06:02:30.225Z"
+      },
+      {
+        "_id": "68f32d76f1749bfd6b87febb",
+        "title": "Chúng Tôi Thiết Kế Và Tạo Kiểu Tóc Mới Nhất",
+        "description": "Chúng tôi luôn cập nhật và tạo ra những kiểu tóc mới nhất theo xu hướng thời trang hiện đại.",
+        "backgroundClass": "bg3",
+        "backgroundImage": "",
+        "ctaText": "Liên hệ ngay",
+        "ctaLink": "tel:+84395284436",
+        "isActive": true,
+        "order": 3,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.225Z",
+        "updatedAt": "2025-10-18T06:02:30.225Z"
+      },
+      {
+        "_id": "68f32d76f1749bfd6b87febc",
+        "title": "Chúng Tôi Thiết Kế Kiểu Tóc Xu Hướng Mới Nhất",
+        "description": "Chúng tôi chuyên thiết kế những kiểu tóc theo xu hướng mới nhất, mang đến cho bạn vẻ ngoài hiện đại và thời trang.",
+        "backgroundClass": "bg4",
+        "backgroundImage": "",
+        "ctaText": "Liên hệ ngay",
+        "ctaLink": "tel:+84395284436",
+        "isActive": true,
+        "order": 4,
+        "__v": 0,
+        "createdAt": "2025-10-18T06:02:30.225Z",
+        "updatedAt": "2025-10-18T06:02:30.225Z"
+      }
+    ],
+    "contacts": []
+  },
+  "summary": {
+    "totalServices": 6,
+    "totalPrices": 6,
+    "totalTestimonials": 6,
+    "totalBanners": 4,
+    "totalContacts": 0,
+    "totalRecords": 22
+  }
+}

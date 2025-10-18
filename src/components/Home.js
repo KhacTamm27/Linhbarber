@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PriceList from "./PriceList";
+import TestimonialsList from "./TestimonialsList";
 
 const Home = () => {
   return (
@@ -265,170 +267,7 @@ const Home = () => {
       {/* // <!-- /services -->
  
 	// <!-- pricing -->  */}
-      <section class="pricing py-5">
-        <div class="container py-md-5">
-          <h3 class="heading text-capitalize text-center mb-3 mb-sm-5">
-            {" "}
-            Bảng giá của chúng tôi
-          </h3>
-          <div class="row pricing-grids">
-            <div class="col-lg-6  mb-lg-0 mb-5">
-              <div class="padding">
-                <h3>GIÁ CẮT RÂU</h3>
-                {/* <!-- Item starts --> */}
-                <div class="menu-item">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Cắt râu kiểu 1</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$7</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item my-4">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Cắt râu kiểu 2</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$10</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Cắt râu kiểu 3</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$15</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item mt-4">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Cắt râu kiểu 4</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$15</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item mt-4">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Cắt râu kiểu 5</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$20</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item mt-4">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Cắt râu kiểu 6</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$25</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends --> */}
-              </div>
-            </div>
-            <div class="col-lg-6  mb-lg-0 mb-5">
-              <div class="padding">
-                <h3>GIÁ CẮT TÓC VÀ RÂU</h3>
-                {/* <!-- Item starts --> */}
-                <div class="menu-item">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Nhuộm tóc và râu 1</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$27</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item my-4">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Nhuộm tóc và râu 2</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$21</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Nhuộm tóc và râu 3</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$25</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item mt-4">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Nhuộm tóc và râu 4</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$28</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item mt-4">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Nhuộm tóc và râu 5</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$30</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends -->
-					<!-- Item starts --> */}
-                <div class="menu-item mt-4">
-                  <div class="row border-dot no-gutters">
-                    <div class="col-8 menu-item-name">
-                      <h6>Nhuộm tóc và râu 6</h6>
-                    </div>
-                    <div class="col-4 menu-item-price text-right">
-                      <h6>$35</h6>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Item ends --> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PriceList />
       //{" "}
       {/* <!-- //pricing -->
 //   <!--/order-now--> */}
@@ -453,107 +292,7 @@ const Home = () => {
       {/* <!--//order-now-->
 
 //  <!--/testimonials--> */}
-      <section class="testimonials py-5" id="testimonials">
-        <div class="container py-md-5">
-          <h3 class="heading text-center mb-3 mb-sm-5">
-            Đánh giá của khách hàng
-          </h3>
-          <div class="row mt-3">
-            <div class="col-md-4 test-grid text-left px-lg-3">
-              <div class="test-info">
-                <p>
-                  Dịch vụ cắt tóc ở đây thật tuyệt vời! Thợ cắt tóc rất chuyên
-                  nghiệp và tận tâm. Tôi rất hài lòng với kết quả.
-                </p>
-                <h3 class="mt-md-4 mt-3"> Abraham Smith</h3>
-
-                <div class="test-img text-center mb-3">
-                  <img
-                    src="assets/images/test1.jpg"
-                    class="img-fluid"
-                    alt="user-image"
-                  />
-                </div>
-                <div class="mobl-footer test-soc text-center">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="#">
-                        <span class="fa fa-facebook-f"></span>
-                      </a>
-                    </li>
-                    <li class="mx-1">
-                      <a href="#">
-                        <span class="fa fa-twitter"></span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 test-grid text-left px-lg-3 py-sm-5 py-md-0 py-3">
-              <div class="test-info">
-                <p>
-                  Salon này có không gian rất đẹp và thoải mái. Nhân viên phục
-                  vụ rất nhiệt tình và chuyên nghiệp.
-                </p>
-                <h3 class="mt-md-4 mt-3"> Mariana Noe</h3>
-                <div class="test-img text-center mb-3">
-                  <img
-                    src="assets/images/test2.jpg"
-                    class="img-fluid"
-                    alt="user-image"
-                  />
-                </div>
-                <div class="mobl-footer test-soc text-center">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="#">
-                        <span class="fa fa-facebook-f"></span>
-                      </a>
-                    </li>
-                    <li class="mx-1">
-                      <a href="#">
-                        <span class="fa fa-twitter"></span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 test-grid text-left px-lg-3">
-              <div class="test-info">
-                <p>
-                  Kiểu tóc mà tôi được cắt ở đây thật hoàn hảo! Tôi sẽ quay lại
-                  lần nữa và giới thiệu cho bạn bè.
-                </p>
-                <h3 class="mt-md-4 mt-3">Nebula Nairobi</h3>
-
-                <div class="test-img text-center mb-3">
-                  <img
-                    src="assets/images/test3.jpg"
-                    class="img-fluid"
-                    alt="user-image"
-                  />
-                </div>
-                <div class="mobl-footer test-soc text-center">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a href="#">
-                        <span class="fa fa-facebook-f"></span>
-                      </a>
-                    </li>
-                    <li class="mx-1">
-                      <a href="#">
-                        <span class="fa fa-twitter"></span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialsList />
       //{" "}
       {/* <!--//testimonials-->
 // <!-- subscribe --> */}
@@ -572,12 +311,16 @@ const Home = () => {
               <form action="#" method="post">
                 <input
                   type="email"
-                  name="email"
-                  placeholder="Nhập email của bạn tại đây"
+                  name="phone"
+                  placeholder="Nhập số điện thoại của bạn tại đây"
                   required=""
                 />
-                <button class="btn1">
-                  <span class="fa fa-paper-plane" aria-hidden="true"></span>
+                <button
+                  class="btn1"
+                  type="button"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <span class="fa fa-paper-plane"></span>
                 </button>
               </form>
               <p>
