@@ -183,7 +183,7 @@ class Home extends Component {
                     />
                   </Link>
                   <div class="ab-info-con">
-                    <h4>Cắt râu</h4>
+                    <h4>Cạo râu</h4>
                     <a href="single.html" class="read-more two btn m-0 px-3">
                       <span class="fa fa-arrow-circle-o-right"> </span>
                     </a>
@@ -253,7 +253,7 @@ class Home extends Component {
                     />
                   </Link>
                   <div class="ab-info-con">
-                    <h4>Kem dưỡng</h4>
+                    <h4>Uốn tóc</h4>
                     <a href="single.html" class="read-more two btn m-0 px-3">
                       <span class="fa fa-arrow-circle-o-right"> </span>
                     </a>

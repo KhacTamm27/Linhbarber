@@ -46,19 +46,18 @@ class Services extends Component {
                 <img src="assets/images/sp3.jpg" class="img-fluid" alt="" />
               </div>
               <div class="col-lg-3 col-md-6 bg-grid-clr mt-lg-5 mt-md-4">
-                <h4 class="mt-md-0 my-2">CẮT TỈA RÂU</h4>
+                <h4 class="mt-md-0 my-2">Nhuộm tóc</h4>
                 <p class="">
-                  Dịch vụ cắt tỉa râu chuyên nghiệp để tạo ra kiểu râu hoàn hảo.
+                  Dịch vụ nhuộm tóc chuyên nghiệp để tạo ra kiểu tóc hoàn hảo.
                 </p>
               </div>
               <div class="col-lg-3 col-md-6 pr-0 pl-md-3 pl-0 mt-lg-5 mt-4">
                 <img src="assets/images/sp4.jpg" class="img-fluid" alt="" />
               </div>
               <div class="col-lg-3 col-md-6 bg-grid-clr mt-lg-5 mt-md-4">
-                <h4 class="mt-md-0 my-2">CẮT TỈA RIA MÉP</h4>
+                <h4 class="mt-md-0 my-2">Uốn tóc</h4>
                 <p class="">
-                  Dịch vụ cắt tỉa ria mép chuyên nghiệp để tạo ra kiểu ria mép
-                  đẹp.
+                  Dịch vụ uốn tóc chuyên nghiệp để tạo ra kiểu tóc hoàn hảo.
                 </p>
               </div>
             </div>
@@ -77,7 +76,7 @@ class Services extends Component {
                     Dịch vụ cắt tóc ở đây thật tuyệt vời! Thợ cắt tóc rất chuyên
                     nghiệp và tận tâm. Tôi rất hài lòng với kết quả.
                   </p>
-                  <h3 class="mt-md-4 mt-3"> Abraham Smith</h3>
+                  <h3 class="mt-md-4 mt-3"> Chương Minh</h3>
 
                   <div class="test-img text-center mb-3">
                     <img
@@ -85,20 +84,6 @@ class Services extends Component {
                       class="img-fluid"
                       alt="user-image"
                     />
-                  </div>
-                  <div class="mobl-footer test-soc text-center">
-                    <ul class="list-unstyled">
-                      <li>
-                        <a href="#">
-                          <span class="fa fa-facebook-f"></span>
-                        </a>
-                      </li>
-                      <li class="mx-1">
-                        <a href="#">
-                          <span class="fa fa-twitter"></span>
-                        </a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
@@ -108,27 +93,13 @@ class Services extends Component {
                     Salon này có không gian rất đẹp và thoải mái. Nhân viên phục
                     vụ rất nhiệt tình và chuyên nghiệp.
                   </p>
-                  <h3 class="mt-md-4 mt-3"> Mariana Noe</h3>
+                  <h3 class="mt-md-4 mt-3"> Văn Đức</h3>
                   <div class="test-img text-center mb-3">
                     <img
                       src="assets/images/test2.jpg"
                       class="img-fluid"
                       alt="user-image"
                     />
-                  </div>
-                  <div class="mobl-footer test-soc text-center">
-                    <ul class="list-unstyled">
-                      <li>
-                        <a href="#">
-                          <span class="fa fa-facebook-f"></span>
-                        </a>
-                      </li>
-                      <li class="mx-1">
-                        <a href="#">
-                          <span class="fa fa-twitter"></span>
-                        </a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
@@ -138,7 +109,7 @@ class Services extends Component {
                     Kiểu tóc mà tôi được cắt ở đây thật hoàn hảo! Tôi sẽ quay
                     lại lần nữa và giới thiệu cho bạn bè.
                   </p>
-                  <h3 class="mt-md-4 mt-3">Nebula Nairobi</h3>
+                  <h3 class="mt-md-4 mt-3">Thắng Nguyễn</h3>
 
                   <div class="test-img text-center mb-3">
                     <img
@@ -146,20 +117,6 @@ class Services extends Component {
                       class="img-fluid"
                       alt="user-image"
                     />
-                  </div>
-                  <div class="mobl-footer test-soc text-center">
-                    <ul class="list-unstyled">
-                      <li>
-                        <a href="#">
-                          <span class="fa fa-facebook-f"></span>
-                        </a>
-                      </li>
-                      <li class="mx-1">
-                        <a href="#">
-                          <span class="fa fa-twitter"></span>
-                        </a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
