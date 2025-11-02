@@ -15,7 +15,6 @@ const GalleryManagement = () => {
     image: "",
     alt: "",
     category: "toc", // Default là "toc" thay vì "all" vì dropdown không có "all"
-    order: 0,
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -57,7 +56,6 @@ const GalleryManagement = () => {
         image: gallery.image,
         alt: gallery.alt || "",
         category: galleryCategory,
-        order: gallery.order || 0,
       });
     } else {
       setEditingGallery(null);
@@ -66,7 +64,6 @@ const GalleryManagement = () => {
         image: "",
         alt: "",
         category: "toc",
-        order: 0,
       });
     }
     setSelectedFile(null);
@@ -82,7 +79,7 @@ const GalleryManagement = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "order" ? parseInt(value) || 0 : value,
+      [name]: value,
     }));
   };
 
@@ -117,7 +114,6 @@ const GalleryManagement = () => {
         image: imageUrl,
         alt: formData.alt || "",
         category: formData.category, // Đảm bảo category được bao gồm
-        order: parseInt(formData.order) || 0,
       };
 
       if (editingGallery) {
@@ -218,7 +214,6 @@ const GalleryManagement = () => {
               <th>Hình Ảnh</th>
               <th>Alt Text</th>
               <th>Danh Mục</th>
-              <th>Thứ Tự</th>
               <th>Thao Tác</th>
             </tr>
           </thead>
@@ -226,7 +221,7 @@ const GalleryManagement = () => {
             {galleries.length === 0 ? (
               <tr>
                 <td
-                  colSpan="5"
+                  colSpan="4"
                   style={{ textAlign: "center", padding: "40px" }}
                 >
                   <i
@@ -260,7 +255,6 @@ const GalleryManagement = () => {
                         ?.name || gallery.category}
                     </span>
                   </td>
-                  <td>{gallery.order}</td>
                   <td>
                     <div className="action-buttons">
                       <button
@@ -392,18 +386,6 @@ const GalleryManagement = () => {
                   value={formData.alt}
                   onChange={handleChange}
                   placeholder="Mô tả ảnh cho SEO"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Thứ Tự</label>
-                <input
-                  type="number"
-                  name="order"
-                  value={formData.order}
-                  onChange={handleChange}
-                  min="0"
-                  placeholder="Số càng nhỏ, hiển thị càng trước"
                 />
               </div>
 
