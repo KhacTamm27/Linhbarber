@@ -14,7 +14,7 @@ const GalleryManagement = () => {
   const [formData, setFormData] = useState({
     image: "",
     alt: "",
-    category: "all",
+    category: "toc", // Default là "toc" thay vì "all" vì dropdown không có "all"
     order: 0,
   });
   const [selectedFile, setSelectedFile] = useState(null);
@@ -48,18 +48,24 @@ const GalleryManagement = () => {
   const handleOpenModal = (gallery = null) => {
     if (gallery) {
       setEditingGallery(gallery);
+      // Đảm bảo category không phải "all" hoặc undefined
+      const galleryCategory =
+        gallery.category && gallery.category !== "all"
+          ? gallery.category
+          : "toc"; // Default to "toc" thay vì "all"
       setFormData({
         image: gallery.image,
         alt: gallery.alt || "",
-        category: gallery.category || "all",
+        category: galleryCategory,
         order: gallery.order || 0,
       });
     } else {
       setEditingGallery(null);
+      // Default category là "toc" thay vì "all" vì dropdown không có "all"
       setFormData({
         image: "",
         alt: "",
-        category: "all",
+        category: "toc",
         order: 0,
       });
     }
@@ -92,6 +98,13 @@ const GalleryManagement = () => {
     try {
       setUploading(true);
 
+      // Đảm bảo category không phải "all" khi submit
+      if (!formData.category || formData.category === "all") {
+        showMessage("danger", "Vui lòng chọn danh mục hợp lệ");
+        setUploading(false);
+        return;
+      }
+
       let imageUrl = formData.image;
 
       // Nếu có file được chọn, upload file trước
@@ -99,9 +112,12 @@ const GalleryManagement = () => {
         imageUrl = await GalleryController.uploadImage(selectedFile);
       }
 
+      // Đảm bảo category được truyền đúng
       const galleryData = {
-        ...formData,
         image: imageUrl,
+        alt: formData.alt || "",
+        category: formData.category, // Đảm bảo category được bao gồm
+        order: parseInt(formData.order) || 0,
       };
 
       if (editingGallery) {
@@ -240,10 +256,8 @@ const GalleryManagement = () => {
                   <td>{gallery.alt || "N/A"}</td>
                   <td>
                     <span className="status-badge active">
-                      {
-                        categories.find((cat) => cat.id === gallery.category)
-                          ?.name || gallery.category
-                      }
+                      {categories.find((cat) => cat.id === gallery.category)
+                        ?.name || gallery.category}
                     </span>
                   </td>
                   <td>{gallery.order}</td>
@@ -432,4 +446,3 @@ const GalleryManagement = () => {
 };
 
 export default GalleryManagement;
-
