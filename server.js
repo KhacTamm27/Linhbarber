@@ -7,7 +7,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-
+//const path = require("path"); // thêm
 // Load environment variables
 dotenv.config();
 
@@ -17,7 +17,8 @@ const priceRoutes = require("./routes/priceRoutes");
 const testimonialRoutes = require("./routes/testimonialRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const bannerRoutes = require("./routes/bannerRoutes");
-const galleryRoutes = require("./routes/galleryRoutes");
+const galleryRoutes = require('./routes/galleryRoutes');
+
 
 // Khởi tạo Express app
 const app = express();
@@ -47,6 +48,11 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 // Static files serving
 app.use("/uploads", express.static("uploads"));
+// Serve uploaded images (phải nằm trước các routes/catch-all)
+//app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+
+
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -54,9 +60,10 @@ app.use((req, res, next) => {
   next();
 });
 
+
 // MongoDB Connection
 const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/hair-salon";
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/hair-salon";
 
 mongoose
   .connect(MONGODB_URI, {
@@ -76,7 +83,8 @@ app.use("/api/prices", priceRoutes);
 app.use("/api/testimonials", testimonialRoutes);
 app.use("/api/contacts", contactRoutes);
 app.use("/api/banners", bannerRoutes);
-app.use("/api/galleries", galleryRoutes);
+app.use('/api/galleries', galleryRoutes);
+
 
 // Health check route
 app.get("/api/health", (req, res) => {
@@ -115,7 +123,6 @@ app.use("/api/*", (req, res) => {
       "/api/testimonials",
       "/api/contacts",
       "/api/banners",
-      "/api/galleries",
     ],
   });
 });

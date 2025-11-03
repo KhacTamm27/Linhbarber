@@ -342,19 +342,42 @@ const Home = () => {
       {/* <!-- //pricing -->
 //   <!--/order-now--> */}
       <section class="order-sec py-5">
-        <div class="container py-md-5">
-          <div class="test-info text-center">
-            <h3 class="tittle order">
-              <span>GỌI CHÚNG TÔI ĐỂ ĐẶT LỊCH HẸN</span>Đội ngũ của chúng tôi sẽ
-              gọi lại ngay lập tức và đặt lịch hẹn
-            </h3>
-            <h4 class="tittle my-2">+84 395 284 436 </h4>
+        <div class="container py-md-5 text-center">
+          <h3 class="fw-bold mb-3">
+            <span class="text-primary d-block fs-2">
+              GỌI CHÚNG TÔI ĐỂ ĐẶT LỊCH HẸN
+            </span>
+            Đội ngũ của chúng tôi sẽ gọi lại ngay lập tức và đặt lịch hẹn
+          </h3>
 
-            <div class="read-more mx-auto m-0 text-center">
-              <Link to="tel:+84395284436" class="read-more scroll btn">
-                Nhấn vào đây
-              </Link>
-            </div>
+          <div
+            class="d-flex justify-content-center align-items-center gap-3 mb-3"
+            style={{ flexWrap: "wrap" }}
+          >
+            <a
+              href="tel:+84395284436"
+              class="d-inline-flex align-items-center bg-light text-primary fw-semibold px-4 py-2 rounded shadow-sm"
+              style={{ textDecoration: "none" }}
+            >
+              <span class="me-2 fs-4">📞</span> +84 395 284 436
+            </a>
+
+            <a
+              href="https://www.facebook.com/NGUYENDILINH2K1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="d-inline-flex align-items-center bg-light text-primary fw-semibold px-4 py-2 rounded shadow-sm"
+              style={{ textDecoration: "none" }}
+            >
+              <span class="fa fa-facebook me-2" aria-hidden="true"></span>
+              FB: Nguyễn Di Linh
+            </a>
+          </div>
+
+          <div class="mb-3">
+            <a href="tel:+84395284436" class="btn btn-primary btn-lg">
+              Nhấn vào đây
+            </a>
           </div>
         </div>
       </section>

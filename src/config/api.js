@@ -7,7 +7,7 @@ import axios from "axios";
 
 // Base URL cho API
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:8000/api";
+  process.env.REACT_APP_API_URL || "http://42.96.19.223:8000/api";
 
 // Tạo axios instance với config mặc định
 const api = axios.create({
