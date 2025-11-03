@@ -8,7 +8,7 @@ const Footer = () => {
           <div class="row footer-top-inner-w3ls">
             <div class="col-lg-4 col-md-6 footer-top ">
               <h2>
-                <a href="index.html">Barber House</a>
+                <a href="index.html">Linh Barber House</a>
               </h2>
               <p class="my-3">
                 Chúng tôi cam kết mang đến cho khách hàng những dịch vụ chăm sóc

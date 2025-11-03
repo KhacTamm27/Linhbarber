@@ -9,8 +9,9 @@ const Navbar = () => {
           <div class="header-agile">
             <h1>
               <Link to="/" class="navbar-brand logo">
-                <span class="fa fa-scissors" aria-hidden="true"></span> Barber
-                House <span class="fa fa-user-secret" aria-hidden="true"></span>
+                <span class="fa fa-scissors" aria-hidden="true"></span> Linh
+                Barber House{" "}
+                <span class="fa fa-user-secret" aria-hidden="true"></span>
               </Link>
             </h1>
           </div>

@@ -7,7 +7,8 @@ import ServiceController from "../controllers/ServiceController";
 const Home = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [selectedDescription, setSelectedDescription] = useState("");
+  const [clickedServiceId, setClickedServiceId] = useState(null);
   useEffect(() => {
     loadServices();
   }, []);
@@ -50,16 +51,26 @@ const Home = () => {
                 <div class="bs-slider-overlay">
                   <div class="banner-text">
                     <div class="container">
-                      <h2 class="movetxt agile-title text-capitalize">
+                      {/* <h2 class="movetxt agile-title text-capitalize">
                         Chúng Tôi Tạo Ra Và Cải Tiến Xu Hướng Tóc
-                      </h2>
-                      <p>
+                      </h2> */}
+                      {/* <p>
                         Chúng tôi chuyên tạo ra những kiểu tóc mới nhất và cải
                         tiến các xu hướng tóc hiện đại. Với kinh nghiệm nhiều
                         năm trong ngành.
-                      </p>
+                      </p> */}
 
-                      <Link to="tel:+84395284436" class="btn">
+                      <Link
+                        to="tel:+84395284436"
+                        className="btn"
+                        style={{
+                          position: "absolute",
+                          bottom: "-2%",
+                          left: "42%",
+                          transform: "translateX(-50%)",
+                          display: "inline-block",
+                        }}
+                      >
                         Liên hệ ngay
                       </Link>
                     </div>
@@ -200,9 +211,13 @@ const Home = () => {
                     <div
                       key={service._id}
                       class="col-md-6 ab-content ab-content1"
+                      onClick={() => {
+                        setClickedServiceId(service._id);
+                      }}
                       style={{
                         display: "flex",
                         marginBottom: "1.5rem",
+                        cursor: "pointer",
                       }}
                     >
                       <div
@@ -248,7 +263,14 @@ const Home = () => {
                             justifyContent: "center",
                           }}
                         >
-                          <h4 style={{ margin: "0.5em 0" }}>{service.name}</h4>
+                          {clickedServiceId === service._id ? (
+                            <p>{service.description}</p>
+                          ) : (
+                            <h4 style={{ margin: "0.5em 0" }}>
+                              {service.name}
+                            </h4>
+                          )}
+
                           <div
                             class="read-more two btn m-0 px-3"
                             style={{ alignSelf: "center", cursor: "default" }}
@@ -269,9 +291,13 @@ const Home = () => {
                     <div
                       key={service._id}
                       class="col-md-3 ab-content"
+                      onClick={() => {
+                        setClickedServiceId(service._id);
+                      }}
                       style={{
                         display: "flex",
                         marginBottom: "1.5rem",
+                        cursor: "pointer",
                       }}
                     >
                       <div
@@ -279,7 +305,7 @@ const Home = () => {
                         style={{
                           display: "flex",
                           flexDirection: "column",
-                          width: "100%",
+                          width: "200%",
                           height: "100%",
                         }}
                       >
@@ -317,7 +343,13 @@ const Home = () => {
                             justifyContent: "center",
                           }}
                         >
-                          <h4 style={{ margin: "0.5em 0" }}>{service.name}</h4>
+                          {clickedServiceId === service._id ? (
+                            <p>{service.description}</p>
+                          ) : (
+                            <h4 style={{ margin: "0.5em 0" }}>
+                              {service.name}
+                            </h4>
+                          )}
                           <div
                             class="read-more two btn m-0 px-3"
                             style={{ alignSelf: "center", cursor: "default" }}
