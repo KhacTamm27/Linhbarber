@@ -103,25 +103,6 @@ class GalleryController {
       throw error;
     }
   }
-  async getAll(req, res) {
-    try {
-      const uploadDir = path.join(process.cwd(), "uploads");
-      const files = fs.readdirSync(uploadDir);
-
-      const list = files.map((file) => {
-        const mime = file.endsWith(".mp4") ? "video/mp4" : "image/jpeg";
-        return {
-          url: `/uploads/${file}`,
-          type: mime,
-        };
-      });
-
-      res.status(200).json(list);
-    } catch (error) {
-      console.error("Lỗi getAll:", error);
-      res.status(500).json({ message: "Lỗi khi load danh sách" });
-    }
-  }
 }
 
 // Export singleton instance
