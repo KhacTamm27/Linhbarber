@@ -29,21 +29,24 @@ const storage = multer.diskStorage({
   },
 });
 
-// Filter để chỉ chấp nhận file ảnh
+// Filter để chấp nhận ảnh + video
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = /jpeg|jpg|png|gif|webp/;
-  const mimetype = file.mimetype.match(allowedTypes);
-  const extname = path.extname(file.originalname).toLowerCase().match(allowedTypes);
-
-  if (mimetype && extname) {
-    return cb(null, true);
+  const allowedTypes = /jpeg|jpg|png|gif|webp|mp4|mov|avi|mkv|webm/;
+  const ext = path.extname(file.originalname).toLowerCase();
+  if (allowedTypes.test(ext)) {
+    cb(null, true);
+  } else {
+    cb(
+      new Error(
+        "Chỉ chấp nhận file ảnh hoặc video (jpeg, jpg, png, gif, webp, mp4, mov, avi, mkv, webm)"
+      )
+    );
   }
-  cb(new Error("Chỉ chấp nhận file ảnh (jpeg, jpg, png, gif, webp)"));
 };
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  limits: { fileSize: 500 * 1024 * 1024 }, // 500MB
   fileFilter: fileFilter,
 });
 
@@ -82,7 +85,7 @@ router.get("/", async (req, res) => {
   try {
     const { category } = req.query;
     let query = { isActive: true };
-    
+
     if (category && category !== "all") {
       query.category = category;
     }
@@ -232,4 +235,3 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
-

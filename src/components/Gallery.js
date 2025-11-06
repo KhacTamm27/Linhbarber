@@ -125,6 +125,10 @@ const Gallery = () => {
               <>
                 <div class="row" style={{ margin: "0 -15px" }}>
                   {getImagesByCategory().map((image, index) => {
+                    const isVideo = image.image?.match(
+                      /\.(mp4|webm|mov|avi)$/i
+                    );
+
                     return (
                       <div
                         key={`${image._id || image.id}-${index}`}
@@ -148,7 +152,7 @@ const Gallery = () => {
                               "transform 0.3s ease, box-shadow 0.3s ease",
                             cursor: "default",
                             position: "relative",
-                            backgroundColor: "#f5f5f5",
+                            backgroundColor: "#000",
                           }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.transform =
@@ -169,18 +173,32 @@ const Gallery = () => {
                             if (overlay) overlay.style.opacity = "0";
                           }}
                         >
-                          <img
-                            src={image.image}
-                            alt={image.alt || "Gallery image"}
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover",
-                              objectPosition: "center",
-                              display: "block",
-                            }}
-                            loading="lazy"
-                          />
+                          {isVideo ? (
+                            <video
+                              src={image.image}
+                              controls
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                              }}
+                              preload="metadata"
+                            />
+                          ) : (
+                            <img
+                              src={image.image}
+                              alt={image.alt || "Gallery image"}
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                objectPosition: "center",
+                                display: "block",
+                              }}
+                              loading="lazy"
+                            />
+                          )}
+
                           {image.alt && (
                             <div
                               className="image-overlay"

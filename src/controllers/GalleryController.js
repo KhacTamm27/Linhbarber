@@ -10,7 +10,7 @@ class GalleryController {
   // Lấy tất cả ảnh gallery từ API
   async getAllGalleries(category = null) {
     try {
-      const endpoint = category 
+      const endpoint = category
         ? `${API_ENDPOINTS.GALLERIES}?category=${category}`
         : API_ENDPOINTS.GALLERIES;
       const response = await api.get(endpoint);
@@ -24,7 +24,9 @@ class GalleryController {
   // Lấy ảnh theo category từ API
   async getGalleriesByCategory(category) {
     try {
-      const response = await api.get(API_ENDPOINTS.GALLERIES_BY_CATEGORY(category));
+      const response = await api.get(
+        API_ENDPOINTS.GALLERIES_BY_CATEGORY(category)
+      );
       return response.data;
     } catch (error) {
       console.error("Error fetching galleries by category:", error);
@@ -85,11 +87,15 @@ class GalleryController {
       const formData = new FormData();
       formData.append("image", file);
 
-      const response = await api.post(API_ENDPOINTS.UPLOAD_GALLERY_IMAGE, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await api.post(
+        API_ENDPOINTS.UPLOAD_GALLERY_IMAGE,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       // API interceptor đã extract response.data, nên response ở đây là response.data từ server
       return response.data.url;
     } catch (error) {
@@ -97,8 +103,26 @@ class GalleryController {
       throw error;
     }
   }
+  async getAll(req, res) {
+    try {
+      const uploadDir = path.join(process.cwd(), "uploads");
+      const files = fs.readdirSync(uploadDir);
+
+      const list = files.map((file) => {
+        const mime = file.endsWith(".mp4") ? "video/mp4" : "image/jpeg";
+        return {
+          url: `/uploads/${file}`,
+          type: mime,
+        };
+      });
+
+      res.status(200).json(list);
+    } catch (error) {
+      console.error("Lỗi getAll:", error);
+      res.status(500).json({ message: "Lỗi khi load danh sách" });
+    }
+  }
 }
 
 // Export singleton instance
 export default new GalleryController();
-
