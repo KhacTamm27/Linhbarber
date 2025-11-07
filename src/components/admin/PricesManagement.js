@@ -83,10 +83,17 @@ const PricesManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // ✅ Chuẩn hóa giá trị trước khi gửi
-      const formattedPrice = formData.price
-        .replace(/\s+/g, "") // loại bỏ tất cả khoảng trắng
-        .trim();
+      let formattedPrice = formData.price.replace(/\s*-\s*/g, "-").trim();
+
+      // ✅ Kiểm tra định dạng giá
+      const priceRegex = /^\d+(-\d+)?$/;
+      if (!priceRegex.test(formattedPrice)) {
+        showMessage(
+          "danger",
+          "Khoảng giá không hợp lệ. Dùng định dạng: 50000 hoặc 50000-100000"
+        );
+        return;
+      }
 
       const submitData = {
         ...formData,
