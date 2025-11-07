@@ -311,71 +311,115 @@ const GalleryManagement = () => {
               </div>
 
               <div className="form-group">
-                <label>Hình Ảnh *</label>
-                <div style={{ marginBottom: "10px" }}>
+                <label>Ảnh / Video *</label>
+
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "10px",
+                  }}
+                >
                   <label
                     htmlFor="gallery-file-upload"
                     className="btn btn-secondary"
                     style={{
-                      display: "inline-block",
-                      marginBottom: "10px",
-                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "100%",
+                      maxWidth: "240px",
+                      textAlign: "center",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      fontSize: "14px",
+                      padding: "10px 0",
                     }}
                   >
-                    <i className="fa fa-upload"></i> Chọn File
+                    <i
+                      className="fa fa-upload"
+                      style={{ marginRight: "8px" }}
+                    ></i>
+                    Chọn File
                   </label>
+
                   <input
                     id="gallery-file-upload"
                     type="file"
-                    accept="image/*"
+                    accept="image/*,video/*"
                     onChange={handleFileChange}
                     style={{ display: "none" }}
                   />
+
                   {selectedFile && (
-                    <span style={{ marginLeft: "10px", color: "#28a745" }}>
+                    <span
+                      style={{
+                        color: "#28a745",
+                        fontSize: "13px",
+                        textAlign: "center",
+                        wordBreak: "break-word",
+                      }}
+                    >
                       <i className="fa fa-check"></i> {selectedFile.name}
                     </span>
                   )}
-                </div>
-                <div
-                  style={{
-                    marginBottom: "10px",
-                    padding: "10px",
-                    backgroundColor: "#f8f9fa",
-                    borderRadius: "4px",
-                    textAlign: "center",
-                    fontSize: "12px",
-                    color: "#6c757d",
-                  }}
-                >
-                  Hoặc
-                </div>
-                <input
-                  type="text"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleChange}
-                  placeholder="Nhập URL hình ảnh (ví dụ: /uploads/image.jpg hoặc assets/images/g1.jpg)"
-                  required={!selectedFile}
-                />
-                {(formData.image || selectedFile) && (
-                  <div style={{ marginTop: "10px" }}>
-                    <img
-                      src={
-                        selectedFile
-                          ? URL.createObjectURL(selectedFile)
-                          : formData.image
-                      }
-                      alt="Preview"
-                      style={{
-                        maxWidth: "200px",
-                        maxHeight: "200px",
-                        border: "1px solid #ddd",
-                        borderRadius: "4px",
-                      }}
-                    />
+
+                  <div
+                    style={{
+                      width: "100%",
+                      textAlign: "center",
+                      fontSize: "12px",
+                      color: "#6c757d",
+                    }}
+                  >
+                    — Hoặc nhập URL —
                   </div>
-                )}
+
+                  <input
+                    type="text"
+                    name="image"
+                    value={formData.image}
+                    onChange={handleChange}
+                    placeholder="VD: /uploads/tenfile.jpg"
+                    required={!selectedFile}
+                    style={{ width: "100%", textAlign: "center" }}
+                  />
+
+                  {(formData.image || selectedFile) && (
+                    <div style={{ marginTop: "10px" }}>
+                      {selectedFile?.type.startsWith("video/") ? (
+                        <video
+                          src={URL.createObjectURL(selectedFile)}
+                          controls
+                          style={{
+                            maxWidth: "100%",
+                            maxHeight: "250px",
+                            borderRadius: "6px",
+                            border: "1px solid #ccc",
+                          }}
+                        />
+                      ) : (
+                        <img
+                          src={
+                            selectedFile
+                              ? URL.createObjectURL(selectedFile)
+                              : formData.image
+                          }
+                          alt="Preview"
+                          style={{
+                            maxWidth: "100%",
+                            maxHeight: "250px",
+                            borderRadius: "6px",
+                            border: "1px solid #ccc",
+                          }}
+                        />
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="form-group">

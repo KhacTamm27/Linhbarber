@@ -1,8 +1,3 @@
-/**
- * MongoDB Model: Price
- * Schema cho bảng giá dịch vụ
- */
-
 const mongoose = require("mongoose");
 
 const priceSchema = new mongoose.Schema(
@@ -18,9 +13,15 @@ const priceSchema = new mongoose.Schema(
       trim: true,
     },
     price: {
-      type: Number,
+      type: String, // ✅ CHẮC CHẮN PHẢI LÀ STRING
       required: [true, "Vui lòng nhập giá"],
-      min: [0, "Giá phải lớn hơn 0"],
+      validate: {
+        validator: function (v) {
+          return /^\d+(-\d+)?$/.test(v); // cho phép 50000 hoặc 50000-100000
+        },
+        message:
+          "Khoảng giá không hợp lệ. Dùng định dạng: 50000 hoặc 50000-100000",
+      },
     },
     description: {
       type: String,
@@ -40,7 +41,6 @@ const priceSchema = new mongoose.Schema(
   }
 );
 
-// Index
 priceSchema.index({ category: 1, order: 1 });
 
 module.exports = mongoose.model("Price", priceSchema);

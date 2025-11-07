@@ -83,9 +83,14 @@ const PricesManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // ✅ Chuẩn hóa giá trị trước khi gửi
+      const formattedPrice = formData.price
+        .replace(/\s+/g, "") // loại bỏ tất cả khoảng trắng
+        .trim();
+
       const submitData = {
         ...formData,
-        price: Number(formData.price),
+        price: formattedPrice,
       };
 
       if (editingPrice) {
@@ -191,7 +196,9 @@ const PricesManagement = () => {
                     </span>
                   </td>
                   <td style={{ fontWeight: "600", color: "#667eea" }}>
-                    ${price.price}
+                    {typeof price.price === "string"
+                      ? price.price.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "₫"
+                      : price.price}
                   </td>
                   <td>{price.description || "N/A"}</td>
                   <td>
@@ -260,12 +267,11 @@ const PricesManagement = () => {
               <div className="form-group">
                 <label>Giá ($) *</label>
                 <input
-                  type="number"
+                  type="text"
                   name="price"
                   value={formData.price}
                   onChange={handleChange}
-                  min="0"
-                  step="0.01"
+                  placeholder="VD: 50000 hoặc 50000 - 100000"
                   required
                 />
               </div>
