@@ -327,7 +327,7 @@ const GalleryManagement = () => {
                   <input
                     id="gallery-file-upload"
                     type="file"
-                    accept="image/*"
+                    accept="image/jpeg,image/png,image/gif,video/mp4,video/avi,video/mov,video/webm"
                     onChange={handleFileChange}
                     style={{ display: "none" }}
                   />
