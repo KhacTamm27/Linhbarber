@@ -350,10 +350,14 @@ const GalleryManagement = () => {
                     id="gallery-file-upload"
                     type="file"
 <<<<<<< HEAD
+<<<<<<< HEAD
                     accept="image/jpeg,image/png,image/gif,video/mp4,video/avi,video/mov,video/webm"
 =======
                     accept="image/*,video/*"
 >>>>>>> 421c49ab673ed34a8e92d4dd2b3df5fc6e580ce4
+=======
+                    accept="image/jpeg,image/png,image/gif,video/mp4,video/avi,video/mov,video/webm"
+>>>>>>> 547c099fb4ae8821fc0997b62221c27a458a480c
                     onChange={handleFileChange}
                     style={{ display: "none" }}
                   />
