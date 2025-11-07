@@ -87,14 +87,59 @@ router.get("/:id", async (req, res) => {
 // POST: Tạo giá mới
 router.post("/", async (req, res) => {
   try {
-    const price = await Price.create(req.body);
+    let { price, name, category, description, order } = req.body;
+
+    if (!price || typeof price !== "string") {
+      return res.status(400).json({
+        success: false,
+        message: "Giá không hợp lệ. Vui lòng nhập đúng định dạng chuỗi!",
+      });
+    }
+
+    // Chuẩn hoá chuỗi nhập
+    price = price.replace(/\s+/g, " ").trim(); // bỏ khoảng trắng thừa
+
+    // Nếu nhập khoảng giá, ví dụ "50000 - 100000"
+    if (price.includes("-")) {
+      const [minRaw, maxRaw] = price.split("-").map((p) => p.trim());
+      const minVal = parseInt(minRaw);
+      const maxVal = parseInt(maxRaw);
+
+      // Nếu người dùng nhập ngược 100000 - 50000 => tự động hoán đổi
+      const min = Math.min(minVal, maxVal);
+      const max = Math.max(minVal, maxVal);
+
+      if (isNaN(min) || isNaN(max)) {
+        return res.status(400).json({
+          success: false,
+          message: "Khoảng giá không hợp lệ. Dùng định dạng: 50000 - 100000",
+        });
+      }
+
+      price = `${min} - ${max}`; // chuẩn hoá lại chuỗi giá
+    } else {
+      // Nếu nhập 1 giá
+      const value = parseInt(price);
+      if (isNaN(value)) {
+        return res.status(400).json({
+          success: false,
+          message: "Giá không hợp lệ. Vui lòng nhập số hoặc khoảng giá hợp lệ.",
+        });
+      }
+      price = value.toString();
+    }
+
+    const priceData = { name, category, price, description, order };
+
+    const newPrice = await Price.create(priceData);
 
     res.status(201).json({
       success: true,
       message: "Tạo bảng giá thành công",
-      data: price,
+      data: newPrice,
     });
   } catch (error) {
+    console.error("Error creating price:", error);
     res.status(400).json({
       success: false,
       message: "Lỗi khi tạo bảng giá",

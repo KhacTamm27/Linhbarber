@@ -57,9 +57,7 @@ const Footer = () => {
 
           <p class="copy-right-grids text-li text-center my-sm-4 my-4">
             {`© 2025 Linh Barber Shop. Tất cả quyền được bảo lưu | Thiết kế bởi `}
-            <a href="https://www.facebook.com/nguyendilinh2k1">
-              Nguyễn Di Linh
-            </a>
+            <a href="https://www.facebook.com/KhacTam.27">Nguyễn Khắc Tâmm</a>
           </p>
           <div class="w3ls-footer text-center mt-4">
             <ul class="list-unstyled w3ls-icons">
