@@ -90,6 +90,13 @@ export const API_ENDPOINTS = {
 
   // Health
   HEALTH: "/health",
+
+  USERS: "/admin/user",
+  USER_BY_ID: (id) => `/admin/user/${id}`,
+  CREATE_USER: "/admin/user",
+  UPDATE_USER: (id) => `/admin/user/${id}`,
+  DELETE_USER: (id) => `/admin/user/${id}`,
+  INCREMENT_CUT: (id) => `/admin/user/${id}/increment-cut`,
 };
 
 export default api;
