@@ -24,8 +24,8 @@ export const servicesData = [
   ),
   new Service(
     2,
-    "Cạo râu",
-    "Dịch vụ cạo râu chuyên nghiệp với các sản phẩm chất lượng cao.",
+    "Tạo Kiểu",
+    "Chuyên viên tạo kiểu giàu kinh nghiệm, tận tâm, giúp khách hàng sở hữu mái tóc đẹp, thời thượng và bồng bềnh.",
     "assets/images/services1.jpg",
     null
   ),
@@ -64,26 +64,27 @@ export const serviceStyles = [
   {
     id: 1,
     name: "CẮT TÓC",
-    description: "Chúng tôi cung cấp các dịch vụ cắt tóc chuyên nghiệp với nhiều kiểu tóc khác nhau.",
-    image: "assets/images/sp1.jpg"
+    description:
+      "Chúng tôi cung cấp các dịch vụ cắt tóc chuyên nghiệp với nhiều kiểu tóc khác nhau.",
+    image: "assets/images/sp1.jpg",
   },
   {
     id: 2,
-    name: "CẠO RÂU",
-    description: "Dịch vụ cạo râu chuyên nghiệp với các sản phẩm chất lượng cao.",
-    image: "assets/images/sp2.jpg"
+    name: "Tạo Kiểu",
+    description:
+      "Chuyên viên tạo kiểu giàu kinh nghiệm, tận tâm, giúp khách hàng sở hữu mái tóc đẹp, thời thượng và bồng bềnh.",
+    image: "assets/images/sp2.jpg",
   },
   {
     id: 3,
     name: "Nhuộm tóc",
     description: "Dịch vụ nhuộm tóc chuyên nghiệp để tạo ra kiểu tóc hoàn hảo.",
-    image: "assets/images/sp3.jpg"
+    image: "assets/images/sp3.jpg",
   },
   {
     id: 4,
     name: "Uốn tóc",
     description: "Dịch vụ uốn tóc chuyên nghiệp để tạo ra kiểu tóc hoàn hảo.",
-    image: "assets/images/sp4.jpg"
+    image: "assets/images/sp4.jpg",
   },
 ];
-

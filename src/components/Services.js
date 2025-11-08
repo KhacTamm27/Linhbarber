@@ -36,9 +36,10 @@ const Services = () => {
               <img src="assets/images/sp2.jpg" class="img-fluid" alt="" />
             </div>
             <div class="col-lg-3 col-md-6 bg-grid-clr mt-lg-0 mt-md-4">
-              <h4 class="mt-md-0 my-2">CẠO RÂU</h4>
+              <h4 class="mt-md-0 my-2">Tạo Kiểu</h4>
               <p class="">
-                Dịch vụ cạo râu chuyên nghiệp với các sản phẩm chất lượng cao.
+                "Chuyên viên tạo kiểu giàu kinh nghiệm, tận tâm, giúp khách hàng
+                sở hữu mái tóc đẹp, thời thượng và bồng bềnh."
               </p>
             </div>
 
