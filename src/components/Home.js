@@ -406,9 +406,31 @@ const Home = () => {
             </a>
           </div>
 
-          <div class="mb-3">
+          {/* <div class="mb-3">
             <a href="tel:+84395284436" class="btn btn-primary btn-lg">
               Nhấn vào đây
+            </a>
+          </div> */}
+          <div className="last-w3ls-contact">
+            <a
+              href="https://www.google.com/maps/place/Linh+Barber+Housee/@13.0340732,109.156351,12z/data=!4m10!1m2!2m1!1zMjhNMitKNVcsIFRow7RuIEzhu5ljIMSQw7RuZywgxJDDtG5nIEjDsmEsIFBow7ogWcOqbg!3m6!1s0x316fef002824d5a3:0xead8ae1cac5c93c2!8m2!3d13.0340732!4d109.3005466!15sCjQyOE0yK0o1VywgVGjDtG4gTOG7mWMgxJDDtG5nLCDEkMO0bmcgSMOyYSwgUGjDuiBZw6puWjMiMTI4bTIgajV3IHRow7RuIGzhu5ljIMSRw7RuZyDEkcO0bmcgaMOyYSBwaMO6IHnDqm6SAQtiYXJiZXJfc2hvcJoBJENoZERTVWhOTUc5blMwVkpRMEZuVFVOWk1XOHpkREozUlJBQuABAPoBBAgAEDM!16s%2Fg%2F11wplw_mm5?entry=ttu&g_ep=EgoyMDI1MTEwNS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex", // dùng flex để icon và chữ thẳng hàng
+                alignItems: "center",
+                gap: "6px", // khoảng cách giữa icon và chữ
+                backgroundColor: "#0066ff",
+                color: "white",
+                padding: "5px 10px",
+                borderRadius: "16px",
+                textDecoration: "none",
+                fontWeight: "bold",
+                transition: "background-color 0.3s ease, transform 0.2s ease",
+              }}
+            >
+              <span className="fa fa-map-marker" aria-hidden="true"></span>
+              Thôn Lộc Đông, Đông Hòa, Phú Yên
             </a>
           </div>
         </div>
