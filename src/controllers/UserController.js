@@ -1,3 +1,4 @@
+import axios from "axios";
 import api, { API_ENDPOINTS } from "../config/api";
 
 const UserController = {
@@ -19,6 +20,15 @@ const UserController = {
   deleteUser: async (id) => {
     const res = await api.delete(`/users/${id}`);
     return res.data;
+  },
+
+  // 🎡 Quay thưởng (API mới)
+  spinUser: async (id, prize) => {
+    const response = await api.put(`/users/spin/${id}`, { prize });
+
+    return response.data;
+    // const res = await api.put(`/users/spin/${id}`);
+    // return res.data; // trả về { success, prize, data }
   },
 };
 

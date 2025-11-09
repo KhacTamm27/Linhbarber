@@ -67,4 +67,42 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// PUT: Quay thưởng khi đủ 3 lần cắt
+router.put("/spin/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, message: "Không tìm thấy user" });
+
+    const prize = req.body.prize;
+
+    const prizes = [
+      "Giảm 20%",
+      "Cạo mặt miễn phí",
+      "Gội đầu miễn phí",
+      "Tặng 1 lượt cắt",
+      "Không trúng thưởng",
+    ];
+
+    user.cut_count = 0;
+    user.cut_history.push({
+      date: new Date(),
+      service: "Vòng quay may mắn",
+      barber: "Hệ thống",
+      notes: `Phần thưởng: ${prize}`,
+    });
+
+    await user.save();
+
+    res.json({
+      success: true,
+      prize,
+      data: user,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
 module.exports = router;

@@ -389,7 +389,7 @@ const Home = () => {
             <a
               href="tel:+84395284436"
               class="d-inline-flex align-items-center bg-light text-primary fw-semibold px-4 py-2 rounded shadow-sm"
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: "none", margin: "15px" }}
             >
               <span class="me-2 fs-4">📞</span> +84 395 284 436
             </a>

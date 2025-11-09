@@ -1,3 +1,5 @@
+import { Wheel } from "react-custom-roulette";
+
 import React, { useState, useEffect } from "react";
 import UserController from "../../controllers/UserController";
 
@@ -8,6 +10,26 @@ const UsersManagement = () => {
   const [editingUser, setEditingUser] = useState(null); // user đang edit
   const [showHistoryModal, setShowHistoryModal] = useState(false); // modal lịch sử cắt
   const [currentHistory, setCurrentHistory] = useState([]); // dữ liệu cut_history của user đang xem
+  const [showCutModal, setShowCutModal] = useState(false);
+  const [showWheel, setShowWheel] = useState(false); // show modal vòng quay
+  const [mustSpin, setMustSpin] = useState(false); // trigger spin
+  const [prizeNumber, setPrizeNumber] = useState(0); // tránh undefined
+  const [selectedUser, setSelectedUser] = useState(null); // user đang quay
+  const [prizeText, setPrizeText] = useState(""); // thông báo phần thưởng
+  const [selectedPrize, setSelectedPrize] = useState(""); // lưu phần thưởng đang quay
+  const [prizeList] = useState([
+    { option: "Giảm 20%" },
+    { option: "Cạo mặt miễn phí" },
+    { option: "Gội đầu miễn phí" },
+    { option: "Tặng 1 lượt cắt" },
+    { option: "Không trúng thưởng" },
+  ]);
+
+  const [cutData, setCutData] = useState({
+    service: "",
+    barber: "",
+    notes: "",
+  });
 
   const [formData, setFormData] = useState({
     // dữ liệu form
@@ -35,18 +57,32 @@ const UsersManagement = () => {
     }
   };
 
-  const handleIncrement = async (user) => {
-    const service = prompt("Tên dịch vụ:");
-    const barber = prompt("Tên thợ cắt:");
-    const notes = prompt("Ghi chú (nếu có):");
-    if (!service) return;
+  const handleIncrement = (user) => {
+    setSelectedUser(user);
+    setCutData({ service: "", barber: "", notes: "" });
+    setShowCutModal(true);
+  };
 
-    const updated = await UserController.incrementCut(user._id, {
-      service,
-      barber,
-      notes,
-    });
-    setUsers(users.map((u) => (u._id === updated._id ? updated : u)));
+  const handleCutSubmit = async () => {
+    try {
+      if (!cutData.service.trim()) {
+        alert("Vui lòng nhập tên dịch vụ!");
+        return;
+      }
+      const updated = await UserController.incrementCut(
+        selectedUser._id,
+        cutData
+      );
+      setUsers(users.map((u) => (u._id === updated._id ? updated : u)));
+      setShowCutModal(false);
+    } catch (err) {
+      console.error("Lỗi khi cập nhật:", err);
+    }
+  };
+
+  const handleCutCancel = () => {
+    setShowCutModal(false);
+    setCutData({ service: "", barber: "", notes: "" });
   };
 
   const handleDelete = async (id) => {
@@ -118,6 +154,33 @@ const UsersManagement = () => {
     setShowHistoryModal(true); // mở modal
   };
 
+  const handleSpin = (user) => {
+    if (!window.confirm(`Xác nhận quay thưởng cho ${user.name}?`)) return;
+    if (!prizeList || prizeList.length === 0) {
+      alert("Danh sách phần thưởng chưa có!");
+      return;
+    }
+
+    setSelectedUser(user);
+
+    // Random chỉ 1 lần
+    const randomIndex = Math.floor(Math.random() * prizeList.length);
+    setPrizeNumber(randomIndex);
+
+    // Lưu phần thưởng tương ứng luôn
+    const prize = prizeList[randomIndex].option;
+    setPrizeText(""); // reset thông báo trước khi quay
+
+    setShowWheel(true);
+
+    // delay nhỏ để chắc chắn state update trước khi bắt đầu spin
+    setTimeout(() => {
+      setMustSpin(true);
+      // lưu prize vào selectedUser để dùng khi animation dừng
+      setSelectedPrize(prize);
+    }, 50);
+  };
+
   const handleCloseHistory = () => {
     setShowHistoryModal(false); // đóng modal
     setCurrentHistory([]);
@@ -129,6 +192,38 @@ const UsersManagement = () => {
     <div>
       <style>
         {`
+        
+}
+.modal-overlay {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index: 999;
+}
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  text-align:center;
+}      
+
+  /* Nút quay thưởng */
+.btn-spin {
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-spin:hover {
+  background-color: #e0a800;
+}
   /* Bảng chính user */
   table {
     width: 100%;
@@ -252,10 +347,8 @@ const UsersManagement = () => {
 `}
       </style>
       <h3>Quản lý khách hàng</h3>
-
       {/* Nút mở modal thêm user */}
       <button onClick={() => handleOpenModal()}>Thêm user mới</button>
-
       {/* Modal thêm/cập nhật user */}
       {showModal && (
         <div className="modal-overlay" onClick={handleCloseModal}>
@@ -322,7 +415,59 @@ const UsersManagement = () => {
           </div>
         </div>
       )}
+      {showWheel && selectedUser && prizeList.length > 0 && (
+        <div className="modal-overlay" onClick={() => setShowWheel(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h4>🎡 Quay thưởng cho {selectedUser.name}</h4>
+            <Wheel
+              mustStartSpinning={mustSpin}
+              prizeNumber={prizeNumber}
+              data={prizeList}
+              onStopSpinning={async () => {
+                setMustSpin(false);
+                const prize =
+                  prizeList[prizeNumber]?.option || "Không xác định";
+                setPrizeText(`${selectedUser.name} quay trúng: ${prize}`);
 
+                // gọi API lưu vào lịch sử sau animation
+                try {
+                  const updatedUser = await UserController.spinUser(
+                    selectedUser._id,
+                    prize
+                  );
+                  setUsers(
+                    users.map((u) =>
+                      u._id === updatedUser._id ? updatedUser : u
+                    )
+                  );
+                } catch (err) {
+                  console.error("Lỗi lưu thưởng:", err);
+                  setPrizeText(
+                    `${selectedUser.name} quay trúng: ${prize} (chưa lưu được)`
+                  );
+                }
+              }}
+            />
+            {prizeText && (
+              <div
+                style={{
+                  marginTop: "10px",
+                  color: "#28a745",
+                  fontWeight: "bold",
+                }}
+              >
+                {prizeText}
+              </div>
+            )}
+            <button
+              onClick={() => setShowWheel(false)}
+              style={{ marginTop: "10px" }}
+            >
+              Hủy
+            </button>
+          </div>
+        </div>
+      )}
       {showHistoryModal && (
         <div className="modal-overlay" onClick={handleCloseHistory}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -355,7 +500,48 @@ const UsersManagement = () => {
           </div>
         </div>
       )}
+      Modal +1 lần cắt
+      {showCutModal && (
+        <div className="modal-overlay" onClick={handleCutCancel}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h4>Thêm lần cắt cho {selectedUser?.name}</h4>
 
+            <input
+              type="text"
+              placeholder="Tên dịch vụ"
+              value={cutData.service}
+              onChange={(e) =>
+                setCutData({ ...cutData, service: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              placeholder="Tên thợ cắt"
+              value={cutData.barber}
+              onChange={(e) =>
+                setCutData({ ...cutData, barber: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              placeholder="Ghi chú (nếu có)"
+              value={cutData.notes}
+              onChange={(e) =>
+                setCutData({ ...cutData, notes: e.target.value })
+              }
+            />
+
+            <div style={{ marginTop: "10px" }}>
+              <button className="btn-submit" onClick={handleCutSubmit}>
+                OK
+              </button>
+              <button className="btn-cancel" onClick={handleCutCancel}>
+                Hủy
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Bảng hiển thị user */}
       {loading ? (
         <p>Đang tải...</p>
@@ -382,14 +568,39 @@ const UsersManagement = () => {
                   <td>{u.phone}</td>
                   <td>{u.birth_year}</td>
                   <td>{u.cut_count}</td>
-                  <td>
-                    <button onClick={() => handleIncrement(u)}>
-                      +1 lần cắt
+                  <td className="action-buttons">
+                    {u.cut_count >= 3 ? (
+                      <button
+                        className="btn-spin"
+                        onClick={() => handleSpin(u)}
+                      >
+                        🎡 Quay thưởng
+                      </button>
+                    ) : (
+                      <button
+                        className="btn-increment"
+                        onClick={() => handleIncrement(u)}
+                      >
+                        +1 lần cắt
+                      </button>
+                    )}
+                    <button
+                      className="btn-delete"
+                      onClick={() => handleDelete(u._id)}
+                    >
+                      Xóa
                     </button>
-                    <button onClick={() => handleDelete(u._id)}>Xóa</button>
-                    <button onClick={() => handleOpenModal(u)}>Sửa</button>
-                    <button onClick={() => handleShowHistory(u)}>
+                    <button
+                      className="btn-info"
+                      onClick={() => handleShowHistory(u)}
+                    >
                       Thông tin
+                    </button>
+                    <button
+                      className="btn-info"
+                      onClick={() => handleOpenModal(u)}
+                    >
+                      Sửa
                     </button>
                   </td>
                 </tr>
