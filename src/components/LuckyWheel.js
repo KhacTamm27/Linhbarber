@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Wheel } from "react-custom-roulette";
 import Swal from "sweetalert2";
-import { Gift } from "lucide-react"; // icon đẹp, có sẵn trong lucide-react (nếu chưa có thì: npm install lucide-react)
+import { Gift } from "lucide-react"; // npm install lucide-react
 
 const LuckyWheel = () => {
   const data = [
@@ -64,6 +64,7 @@ const LuckyWheel = () => {
             alignItems: "center",
             justifyContent: "center",
             zIndex: 1000,
+            padding: "10px",
           }}
         >
           <div
@@ -73,26 +74,47 @@ const LuckyWheel = () => {
               padding: "20px",
               textAlign: "center",
               width: "90%",
-              maxWidth: "400px",
+              maxWidth: "500px",
               boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <h3 style={{ marginBottom: "15px", color: "#ff6600" }}>
+            <h3
+              style={{
+                marginBottom: "15px",
+                color: "#ff6600",
+                fontSize: "1.4rem",
+              }}
+            >
               🎯 Vòng quay may mắn 🎁
             </h3>
 
-            <div style={{ width: 350, height: 250, margin: "0 auto" }}>
+            <div
+              style={{
+                width: "100%",
+                maxWidth: "450px",
+                aspectRatio: "1 / 1",
+                margin: "0 auto",
+              }}
+            >
               <Wheel
                 mustStartSpinning={mustSpin}
                 prizeNumber={prizeNumber}
                 data={data}
                 backgroundColors={["#FFD700", "#FF9966", "#66CCFF", "#FF6699"]}
                 textColors={["#000"]}
+                fontSize={14}
+                outerBorderWidth={5}
+                outerBorderColor="#000"
+                innerRadius={20}
                 onStopSpinning={() => {
                   setMustSpin(false);
+                  const prize = data[prizeNumber]?.option || "Không xác định";
                   Swal.fire({
                     title: "🎉 Kết quả",
-                    text: `Bạn trúng: ${data[prizeNumber].option}`,
+                    text: `Bạn trúng: ${prize}`,
                     icon: "success",
                     confirmButtonColor: "#ff6600",
                   });
@@ -100,9 +122,24 @@ const LuckyWheel = () => {
               />
             </div>
 
-            <div style={{ marginTop: "100px" }}>
+            {/* Nút quay + đóng */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "10px",
+                marginTop: "20px",
+                flexWrap: "wrap",
+              }}
+            >
               <button
-                onClick={handleSpinClick}
+                onClick={() => {
+                  if (!mustSpin) {
+                    const randomPrize = Math.floor(Math.random() * data.length);
+                    setPrizeNumber(randomPrize);
+                    setMustSpin(true);
+                  }
+                }}
                 disabled={mustSpin}
                 style={{
                   backgroundColor: "#ff6600",
@@ -113,14 +150,13 @@ const LuckyWheel = () => {
                   cursor: "pointer",
                   fontSize: "16px",
                   fontWeight: "bold",
-                  marginRight: "10px",
                 }}
               >
                 {mustSpin ? "Đang quay..." : "🎡 Quay ngay"}
               </button>
 
               <button
-                onClick={handleClose}
+                onClick={() => setShowWheel(false)}
                 style={{
                   backgroundColor: "#ccc",
                   color: "#333",
