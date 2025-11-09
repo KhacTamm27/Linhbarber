@@ -9,6 +9,7 @@ import Single from "./components/Single";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 import Admin from "./components/Admin";
+import LuckyWheel from "./components/LuckyWheel";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
+        {/* Đặt LuckyWheel ở đây để luôn hiển thị icon 🎁 */}
+        <LuckyWheel />
         <Footer />
       </Router>
     </div>

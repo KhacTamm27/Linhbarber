@@ -1,5 +1,5 @@
 import { Wheel } from "react-custom-roulette";
-
+import Swal from "sweetalert2";
 import React, { useState, useEffect } from "react";
 import UserController from "../../controllers/UserController";
 
@@ -196,34 +196,78 @@ const UsersManagement = () => {
 }
 .modal-overlay {
   position: fixed;
-  top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.5);
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6); /* mờ hơn */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 999;
 }
+/* Modal content */
 .modal-content {
   background: #fff;
   padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
+  border-radius: 20px; /* giống LuckyWheel */
+  max-width: 450px;
   width: 90%;
-  text-align:center;
-}      
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  overflow-y: auto;
+  word-wrap: break-word;  /* chữ dài tự xuống dòng */
+}    
 
-  /* Nút quay thưởng */
 .btn-spin {
-  background-color: #ffc107;
-  color: #000;
+  background-color: #ff6600; /* giống LuckyWheel */
+  color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 .btn-spin:hover {
-  background-color: #e0a800;
+  background-color: #e65c00;
 }
+
+/* Nút đóng / hủy */
+.btn-cancel {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-cancel:hover {
+  background-color: #999;
+}
+
+/* Thông báo prize */
+.prize-text {
+  margin-top: 10px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Prize text */
+.prize-text {
+  margin-top: 10px;
+  color: #28a745;
+  font-weight: bold;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: pre-wrap; 
+  max-width: 100%; 
+  font-size: 16px; 
+  overflow-wrap: anywhere;  /* đảm bảo xuống dòng nếu quá dài */
+} 
+
   /* Bảng chính user */
   table {
     width: 100%;
@@ -423,12 +467,20 @@ const UsersManagement = () => {
               mustStartSpinning={mustSpin}
               prizeNumber={prizeNumber}
               data={prizeList}
+              backgroundColors={["#FFD700", "#FF9966", "#66CCFF", "#FF6699"]}
+              textColors={["#000"]}
               onStopSpinning={async () => {
                 setMustSpin(false);
                 const prize =
                   prizeList[prizeNumber]?.option || "Không xác định";
                 setPrizeText(`${selectedUser.name} quay trúng: ${prize}`);
-
+                // Hiển thị popup thông báo
+                Swal.fire({
+                  title: "🎉 Kết quả",
+                  text: `${selectedUser.name} quay trúng: ${prize}`,
+                  icon: "success",
+                  confirmButtonColor: "#ff6600",
+                });
                 // gọi API lưu vào lịch sử sau animation
                 try {
                   const updatedUser = await UserController.spinUser(
@@ -449,21 +501,15 @@ const UsersManagement = () => {
               }}
             />
             {prizeText && (
-              <div
-                style={{
-                  marginTop: "10px",
-                  color: "#28a745",
-                  fontWeight: "bold",
-                }}
-              >
+              <div className="prize-text" style={{ minHeight: "10px" }}>
                 {prizeText}
               </div>
             )}
-            <button
-              onClick={() => setShowWheel(false)}
-              style={{ marginTop: "10px" }}
-            >
-              Hủy
+            <button className="btn-spin" onClick={() => setMustSpin(true)}>
+              {mustSpin ? "Đang quay..." : "🎡 Quay ngay"}
+            </button>
+            <button className="btn-cancel" onClick={() => setShowWheel(false)}>
+              Đóng
             </button>
           </div>
         </div>

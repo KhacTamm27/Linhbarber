@@ -4,6 +4,8 @@ import PriceList from "./PriceList";
 import TestimonialsList from "./TestimonialsList";
 import ServiceController from "../controllers/ServiceController";
 
+import LuckyWheel from "../components/LuckyWheel";
+
 const Home = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -483,5 +485,10 @@ const Home = () => {
     </div>
   );
 };
+
+<>
+  {/* Toàn bộ nội dung trang Home */}
+  <LuckyWheel />
+</>;
 
 export default Home;
