@@ -18,11 +18,12 @@ const UsersManagement = () => {
   const [prizeText, setPrizeText] = useState(""); // thông báo phần thưởng
   const [selectedPrize, setSelectedPrize] = useState(""); // lưu phần thưởng đang quay
   const [prizeList] = useState([
-    { option: "Giảm 20%" },
-    { option: "Cạo mặt miễn phí" },
+    { option: "Lột mụn miễn phí" },
     { option: "Gội đầu miễn phí" },
+    { option: "Cạo mặt miễn phí" },
+    // { option: "Không trúng thưởng 😅" },
     { option: "Tặng 1 lượt cắt" },
-    { option: "Không trúng thưởng" },
+    { option: "Đắp mặt nạ miễn phí" },
   ]);
 
   const [cutData, setCutData] = useState({
@@ -163,20 +164,34 @@ const UsersManagement = () => {
 
     setSelectedUser(user);
 
-    // Random chỉ 1 lần
-    const randomIndex = Math.floor(Math.random() * prizeList.length);
-    setPrizeNumber(randomIndex);
+    // 🎯 Thiết lập tỉ lệ cho từng phần thưởng
+    // Tương ứng thứ tự trong prizeList
+    // (cao hơn => dễ trúng hơn)
+    const weights = [25, 25, 20, 2, 8];
 
-    // Lưu phần thưởng tương ứng luôn
-    const prize = prizeList[randomIndex].option;
-    setPrizeText(""); // reset thông báo trước khi quay
+    // Hàm chọn random theo trọng số
+    const weightedRandom = (weights) => {
+      const total = weights.reduce((sum, w) => sum + w, 0);
+      const random = Math.random() * total;
+      let cumulative = 0;
+      for (let i = 0; i < weights.length; i++) {
+        cumulative += weights[i];
+        if (random < cumulative) return i;
+      }
+      return weights.length - 1;
+    };
 
+    // Chọn phần thưởng theo tỉ lệ
+    const selectedPrizeIndex = weightedRandom(weights);
+    const prize = prizeList[selectedPrizeIndex].option;
+
+    setPrizeNumber(selectedPrizeIndex);
+    setPrizeText("");
     setShowWheel(true);
 
     // delay nhỏ để chắc chắn state update trước khi bắt đầu spin
     setTimeout(() => {
       setMustSpin(true);
-      // lưu prize vào selectedUser để dùng khi animation dừng
       setSelectedPrize(prize);
     }, 50);
   };

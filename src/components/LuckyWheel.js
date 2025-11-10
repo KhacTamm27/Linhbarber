@@ -4,31 +4,47 @@ import Swal from "sweetalert2";
 import { Gift } from "lucide-react"; // npm install lucide-react
 
 const LuckyWheel = () => {
+  // 🎁 Danh sách phần thưởng
   const data = [
-    { option: "Giảm 20%" },
+    { option: "Lột mụn miễn phí" },
     { option: "Gội đầu miễn phí" },
     { option: "Cạo mặt miễn phí" },
     { option: "Không trúng thưởng 😅" },
     { option: "Tặng 1 lượt cắt" },
-    { option: "Giảm 10%" },
+    { option: "Đắp mặt nạ miễn phí" },
   ];
+
+  // 🎯 Tỉ lệ từng phần thưởng (tổng càng lớn thì càng mịn)
+  // Giá trị càng cao => xác suất trúng càng lớn
+  const weights = [25, 25, 20, 20, 2, 8];
+  // 👉 “Tặng 1 lượt cắt” (index 4) có tỉ lệ thấp nhất = 2%
 
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
   const [showWheel, setShowWheel] = useState(false);
 
+  // 🧮 Hàm chọn phần thưởng theo tỉ lệ
+  const weightedRandom = (weights) => {
+    const total = weights.reduce((sum, w) => sum + w, 0);
+    const random = Math.random() * total;
+    let cumulative = 0;
+    for (let i = 0; i < weights.length; i++) {
+      cumulative += weights[i];
+      if (random < cumulative) return i;
+    }
+    return weights.length - 1;
+  };
+
   const handleSpinClick = () => {
     if (mustSpin) return;
-    const randomPrize = Math.floor(Math.random() * data.length);
-    setPrizeNumber(randomPrize);
+    const selectedPrize = weightedRandom(weights);
+    setPrizeNumber(selectedPrize);
     setMustSpin(true);
   };
 
-  const handleClose = () => setShowWheel(false);
-
   return (
     <>
-      {/* 🎁 Icon nhỏ góc dưới */}
+      {/* 🎁 Icon góc dưới */}
       <div
         onClick={() => setShowWheel(true)}
         style={{
@@ -74,7 +90,7 @@ const LuckyWheel = () => {
               padding: "20px",
               textAlign: "center",
               width: "90%",
-              maxWidth: "500px",
+              maxWidth: "480px",
               boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
               display: "flex",
               flexDirection: "column",
@@ -94,7 +110,7 @@ const LuckyWheel = () => {
             <div
               style={{
                 width: "100%",
-                maxWidth: "450px",
+                maxWidth: "420px",
                 aspectRatio: "1 / 1",
                 margin: "0 auto",
               }}
@@ -133,13 +149,7 @@ const LuckyWheel = () => {
               }}
             >
               <button
-                onClick={() => {
-                  if (!mustSpin) {
-                    const randomPrize = Math.floor(Math.random() * data.length);
-                    setPrizeNumber(randomPrize);
-                    setMustSpin(true);
-                  }
-                }}
+                onClick={handleSpinClick}
                 disabled={mustSpin}
                 style={{
                   backgroundColor: "#ff6600",
