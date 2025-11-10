@@ -9,14 +9,14 @@ const LuckyWheel = () => {
     { option: "Lột mụn miễn phí" },
     { option: "Gội đầu miễn phí" },
     { option: "Cạo mặt miễn phí" },
-    { option: "Không trúng thưởng 😅" },
+    // { option: "Không trúng thưởng 😅" },
     { option: "Tặng 1 lượt cắt" },
     { option: "Đắp mặt nạ miễn phí" },
   ];
 
   // 🎯 Tỉ lệ từng phần thưởng (tổng càng lớn thì càng mịn)
   // Giá trị càng cao => xác suất trúng càng lớn
-  const weights = [25, 25, 20, 20, 2, 8];
+  const weights = [25, 25, 20, 2, 8];
   // 👉 “Tặng 1 lượt cắt” (index 4) có tỉ lệ thấp nhất = 2%
 
   const [mustSpin, setMustSpin] = useState(false);
