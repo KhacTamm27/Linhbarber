@@ -1,0 +1,83 @@
+/* snow.css */
+.snow-wrapper {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  pointer-events: none; /* không cản tác động chuột */
+  z-index: 1000; /* đặt cao hơn header nếu cần */
+  overflow: hidden;
+}
+
+/* Một flake trắng tròn, có shadow nhẹ */
+.snow-flake {
+  position: absolute;
+  top: -10vh; /* bắt đầu ở trên viewport */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(245, 245, 245, 0.9)
+  );
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  transform: translateY(0) rotate(0deg);
+  animation-name: fall, sway, twinkle;
+  animation-timing-function: linear, ease-in-out, ease-in-out;
+  animation-iteration-count: infinite, infinite, infinite;
+  /* fall: dịch chuyển từ trên xuống dưới;
+     sway: dịch trái phải nhẹ (dùng translateX trong keyframes);
+     twinkle: thay đổi opacity / scale nhẹ */
+}
+
+/* rơi thẳng xuống */
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* đung đưa ngang nhẹ */
+@keyframes sway {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(25vh) translateX(12px) rotate(20deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(-10px) rotate(-10deg);
+  }
+  75% {
+    transform: translateY(75vh) translateX(8px) rotate(10deg);
+  }
+  100% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+  }
+}
+
+/* nhấp nháy nhẹ (thay đổi opacity và scale) */
+@keyframes twinkle {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
+
+/* Tối ưu khi màn hình nhỏ: giảm số lượng/hiệu ứng */
+@media (max-width: 480px) {
+  .snow-wrapper {
+    z-index: 800;
+  }
+  .snow-flake {
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+  }
+}

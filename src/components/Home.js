@@ -3,14 +3,39 @@ import { Link } from "react-router-dom";
 import PriceList from "./PriceList";
 import TestimonialsList from "./TestimonialsList";
 import ServiceController from "../controllers/ServiceController";
-
+import Confetti from "react-confetti";
 import LuckyWheel from "../components/LuckyWheel";
+import Snowfall from "react-snowfall";
 
 const Home = () => {
+  const [showPopup, setShowPopup] = useState(false);
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedDescription, setSelectedDescription] = useState("");
   const [clickedServiceId, setClickedServiceId] = useState(null);
+  const [confetti, setConfetti] = useState(false);
+
+  useEffect(() => {
+    // Kiểm tra xem popup đã hiển thị trước đó chưa
+    const hasSeenPopup = localStorage.getItem("hasSeenNoelPopup");
+
+    if (!hasSeenPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+        setConfetti(true); // bật confetti khi popup xuất hiện
+
+        // tắt confetti sau 5 giây
+        setTimeout(() => setConfetti(false), 5000);
+
+        // đánh dấu đã hiển thị popup
+        localStorage.setItem("hasSeenNoelPopup", "true");
+      }, 1500); // hiển thị popup sau 1.5 giây
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  // Load dịch vụ riêng
   useEffect(() => {
     loadServices();
   }, []);
@@ -37,7 +62,71 @@ const Home = () => {
 
   return (
     <div>
-      //{" "}
+      <Snowfall
+        snowflakeCount={100} // giảm số lượng tuyết
+        color="white"
+        radius={[2, 2]} // giảm kích thước
+        speed={[0.5, 2]} // giảm tốc độ
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          pointerEvents: "none",
+          zIndex: 9999,
+        }}
+      />
+      <Snowfall
+        snowflakeCount={15} // giảm số lượng lớp vàng
+        color="#FFD700"
+        radius={[2, 6]}
+        speed={[0.3, 1]}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          pointerEvents: "none",
+          zIndex: 9998,
+        }}
+      />
+      {/* Confetti */}
+      {confetti && (
+        <Confetti
+          width={window.innerWidth}
+          height={window.innerHeight}
+          recycle={false}
+          numberOfPieces={200}
+        />
+      )}
+      {/* Popup Noel */}
+      {showPopup && (
+        <div style={styles.popupOverlay}>
+          <div style={styles.popupContent}>
+            <h3 style={{ color: "#d63384", marginBottom: "10px" }}>
+              🎄 Sắp tới Noel rồi 🎅
+            </h3>
+            <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#333" }}>
+              Bạn có người yêu chưa? <br />
+              Nếu chưa thì do bạn chưa đủ sức hút 😎 <br />
+              Hãy đến với <b>Linh Barber</b> làm đẹp để có người yêu đi chơi
+              Noel nhé!
+            </p>
+            <button
+              onClick={() => {
+                setShowPopup(false);
+                setConfetti(true);
+                setTimeout(() => setConfetti(false), 5000); // tắt confetti sau 5 giây
+              }}
+              style={styles.popupButton}
+            >
+              OK ❤️
+            </button>
+          </div>
+        </div>
+      )}
       {/* <!-- //header -->
 // <!-- banner --> */}
       <div class="banner_w3lspvt" id="home">
@@ -490,5 +579,66 @@ const Home = () => {
   {/* Toàn bộ nội dung trang Home */}
   <LuckyWheel />
 </>;
+// CSS styles in JS
+const styles = {
+  popupOverlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 9999,
+  },
+  popupContent: {
+    backgroundColor: "#fff",
+    borderRadius: "16px",
+    padding: "30px 40px",
+    maxWidth: "400px",
+    textAlign: "center",
+    boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+    animation: "popupBounce 0.5s ease-out",
+  },
+  popupButton: {
+    marginTop: "20px",
+    padding: "8px 20px",
+    backgroundColor: "#0066ff",
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+    fontWeight: "bold",
+  },
+  banner: {
+    background: "linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb)",
+    backgroundSize: "400% 400%",
+    animation: "bgGradient 15s ease infinite",
+  },
+};
+
+// CSS animation for popup bounce & banner gradient
+const styleSheet = document.styleSheets[0];
+styleSheet.insertRule(
+  `
+@keyframes popupBounce {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}`,
+  styleSheet.cssRules.length
+);
+
+styleSheet.insertRule(
+  `
+@keyframes bgGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}`,
+  styleSheet.cssRules.length
+);
 
 export default Home;
