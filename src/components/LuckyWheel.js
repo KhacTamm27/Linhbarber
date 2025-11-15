@@ -51,19 +51,44 @@ const LuckyWheel = () => {
           position: "fixed",
           bottom: "30px",
           right: "30px",
-          backgroundColor: "#ff6600",
-          borderRadius: "50%",
-          width: "65px",
-          height: "65px",
           display: "flex",
+          flexDirection: "column", // chữ trên, icon dưới
           alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0 0 10px rgba(0,0,0,0.3)",
           cursor: "pointer",
           zIndex: 999,
         }}
       >
-        <Gift size={32} color="white" />
+        {/* Chữ trên icon */}
+        <div
+          style={{
+            fontSize: "14px",
+            fontWeight: "bold",
+            color: "#ff5e01ff",
+            marginBottom: "5px",
+            textShadow: "1px 1px 2px #000",
+            animation: "bounce 1.5s infinite",
+          }}
+        >
+          Quay thưởng
+        </div>
+
+        {/* Mũi tên nhấp nháy */}
+
+        {/* Icon quà */}
+        <div
+          style={{
+            backgroundColor: "#ff6600",
+            borderRadius: "50%",
+            width: "65px",
+            height: "65px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 0 10px rgba(0,0,0,0.3)",
+          }}
+        >
+          <Gift size={32} color="white" />
+        </div>
       </div>
 
       {/* 🌀 Popup vòng quay */}

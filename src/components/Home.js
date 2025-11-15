@@ -6,6 +6,7 @@ import ServiceController from "../controllers/ServiceController";
 import Confetti from "react-confetti";
 import LuckyWheel from "../components/LuckyWheel";
 import Snowfall from "react-snowfall";
+import Snow from "./Snow";
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -62,11 +63,12 @@ const Home = () => {
 
   return (
     <div>
+      <Snow count={30} />
       <Snowfall
-        snowflakeCount={100} // giảm số lượng tuyết
+        snowflakeCount={50} // giảm số lượng tuyết
         color="white"
-        radius={[2, 2]} // giảm kích thước
-        speed={[0.5, 2]} // giảm tốc độ
+        radius={[1, 1]} // giảm kích thước
+        speed={[0.5, 1]} // giảm tốc độ
         style={{
           position: "fixed",
           top: 0,
@@ -264,13 +266,44 @@ const Home = () => {
                 mang đến cho bạn những trải nghiệm tuyệt vời nhất.
               </p>
 
-              <Link
-                to="/services"
-                class="btn mt-lg-4 mt-3 read scroll"
-                role="button"
-              >
-                Tìm hiểu thêm
-              </Link>
+              <div style={{ textAlign: "center", marginTop: "20px" }}>
+                <Link
+                  to="/services"
+                  className="btn"
+                  style={{
+                    backgroundColor: "#cac02bff",
+                    color: "white",
+                    padding: "10px 20px",
+                    borderRadius: "8px",
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    display: "inline-block",
+                  }}
+                >
+                  Tìm hiểu thêm
+                </Link>
+
+                {/* Nút Nội dung các mẫu tóc hiện đại */}
+                <Link
+                  to="/gallery"
+                  className="btn"
+                  style={{
+                    backgroundColor: "#cac02bff",
+                    color: "white",
+                    padding: "10px 20px",
+                    borderRadius: "8px",
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    display: "block", // xuống hàng
+                    marginTop: "15px",
+                    width: "fit-content",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                  }}
+                >
+                  Các mẫu tóc hiện đại
+                </Link>
+              </div>
             </div>
           </div>
         </div>
