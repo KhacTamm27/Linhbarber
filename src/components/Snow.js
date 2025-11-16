@@ -7,26 +7,26 @@ const Snow = ({ count = 60, giftCount = 6 }) => {
   return (
     <>
       {/* Tuyết rơi */}
-      <div className="snow-wrapper" aria-hidden="true">
+      <div className="snow-wrapper">
         {flakes.map((_, i) => {
           const left = Math.random() * 100;
-          const delay = Math.random() * 8;
-          const duration = 6 + Math.random() * 10;
-          const size = 6 + Math.random() * 10;
-          const opacity = 0.3 + Math.random() * 0.7;
+          const delay = Math.random() * 5;
+          const duration = 8 + Math.random() * 6;
+          const size = 15 + Math.random() * 10;
 
           return (
-            <div
+            <img
               key={i}
+              src="assets/images/snowflake.svg"
               className="snow-flake"
               style={{
                 left: `${left}%`,
                 width: `${size}px`,
                 height: `${size}px`,
-                opacity,
                 animationDelay: `${delay}s`,
                 animationDuration: `${duration}s`,
               }}
+              alt="snow"
             />
           );
         })}
@@ -37,8 +37,8 @@ const Snow = ({ count = 60, giftCount = 6 }) => {
 
       {/* Hộp quà rơi */}
       {gifts.map((_, i) => {
-        const left = Math.random() * 100;
-        const delay = Math.random() * 5;
+        const left = Math.random() * 50;
+        const delay = Math.random() * 2;
         const duration = 4 + Math.random() * 5;
         const size = 30 + Math.random() * 40;
 

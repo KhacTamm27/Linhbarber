@@ -63,8 +63,8 @@ const Home = () => {
 
   return (
     <div>
-      <Snow count={30} />
-      <Snowfall
+      <Snow count={40} />
+      {/* <Snowfall
         snowflakeCount={50} // giảm số lượng tuyết
         color="white"
         radius={[1, 1]} // giảm kích thước
@@ -78,9 +78,9 @@ const Home = () => {
           pointerEvents: "none",
           zIndex: 9999,
         }}
-      />
-      <Snowfall
-        snowflakeCount={15} // giảm số lượng lớp vàng
+      /> */}
+      {/* <Snowfall
+        snowflakeCount={5} // giảm số lượng lớp vàng
         color="#FFD700"
         radius={[2, 6]}
         speed={[0.3, 1]}
@@ -93,7 +93,7 @@ const Home = () => {
           pointerEvents: "none",
           zIndex: 9998,
         }}
-      />
+      /> */}
       {/* Confetti */}
       {confetti && (
         <Confetti
@@ -604,14 +604,15 @@ const Home = () => {
       //{" "}
       {/* <!-- //subscribe -->
 // <!-- footer --> */}
+      <>
+        {/* Toàn bộ nội dung trang Home */}
+        <LuckyWheel />
+      </>
+      ;
     </div>
   );
 };
 
-<>
-  {/* Toàn bộ nội dung trang Home */}
-  <LuckyWheel />
-</>;
 // CSS styles in JS
 const styles = {
   popupOverlay: {
