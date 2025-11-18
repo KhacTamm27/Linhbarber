@@ -7,6 +7,7 @@ import Confetti from "react-confetti";
 import LuckyWheel from "../components/LuckyWheel";
 import Snowfall from "react-snowfall";
 import Snow from "./Snow";
+import FloatingButtons from "./FloatingButtons";
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -36,33 +37,6 @@ const Home = () => {
       return () => clearTimeout(timer);
     }
   }, []);
-  useEffect(() => {
-    const audio = document.getElementById("noel-audio");
-
-    const enableAudio = () => {
-      if (audio) {
-        audio.muted = false;
-        audio.play().catch(() => {});
-      }
-      document.removeEventListener("click", enableAudio);
-    };
-
-    document.addEventListener("click", enableAudio);
-
-    return () => document.removeEventListener("click", enableAudio);
-  }, []);
-
-  useEffect(() => {
-    const audio = document.getElementById("noel-audio");
-    if (!audio) return;
-
-    if (musicOn) {
-      audio.muted = false;
-      audio.play().catch(() => {});
-    } else {
-      audio.pause();
-    }
-  }, [musicOn]);
 
   // Load dịch vụ riêng
   useEffect(() => {
@@ -91,32 +65,7 @@ const Home = () => {
 
   return (
     <div>
-      <style>{`
-        @keyframes pulseGlow {
-          0% {
-            transform: scale(1);
-            box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
-          }
-          50% {
-            transform: scale(1.15);
-            box-shadow: 0 0 22px rgba(255, 140, 0, 0.9);
-          }
-          100% {
-            transform: scale(1);
-            box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
-          }
-        }
-      `}</style>
       <Snow count={40} />
-      {/* Nhạc Noel */}
-      <audio id="noel-audio" autoPlay loop muted>
-        <source src="assets/images/noel.mp3" type="audio/mpeg" />
-      </audio>
-      {/* Nút bật/tắt nhạc */}
-      {/* Nút bật tắt nhạc */}
-      <button onClick={() => setMusicOn(!musicOn)} className="music-toggle-btn">
-        {musicOn ? "🔊" : "🔇"}
-      </button>
       <Snowfall
         snowflakeCount={50} // giảm số lượng tuyết
         color="white"
@@ -646,6 +595,9 @@ const Home = () => {
         {/* Toàn bộ nội dung trang Home */}
         <LuckyWheel />
       </>
+      <>
+        <FloatingButtons />
+      </>
       ;
     </div>
   );
@@ -690,27 +642,12 @@ const styles = {
     animation: "bgGradient 15s ease infinite",
   },
 };
-
-// CSS animation for popup bounce & banner gradient
-const styleSheet = document.styleSheets[0];
-styleSheet.insertRule(
-  `
-@keyframes popupBounce {
-  0% { transform: scale(0.5); opacity: 0; }
-  60% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); }
-}`,
-  styleSheet.cssRules.length
-);
-
-styleSheet.insertRule(
-  `
-@keyframes bgGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}`,
-  styleSheet.cssRules.length
-);
-
+/* ===================== CSS ANIMATION ===================== */
+const animationCSS = `
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+  50% { transform: scale(1.12); box-shadow: 0 0 18px rgba(0,0,0,0.35); }
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+}
+`;
 export default Home;

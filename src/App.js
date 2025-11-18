@@ -10,7 +10,7 @@ import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 import Admin from "./components/Admin";
 import LuckyWheel from "./components/LuckyWheel";
-
+import FloatingButtons from "./components/FloatingButtons";
 function App() {
   return (
     <div>
@@ -27,6 +27,7 @@ function App() {
         </Routes>
         {/* Đặt LuckyWheel ở đây để luôn hiển thị icon 🎁 */}
         <LuckyWheel />
+        <FloatingButtons />
         <Footer />
       </Router>
     </div>
