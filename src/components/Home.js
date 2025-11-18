@@ -15,6 +15,7 @@ const Home = () => {
   const [selectedDescription, setSelectedDescription] = useState("");
   const [clickedServiceId, setClickedServiceId] = useState(null);
   const [confetti, setConfetti] = useState(false);
+  const [musicOn, setMusicOn] = useState(true);
 
   useEffect(() => {
     // Kiểm tra xem popup đã hiển thị trước đó chưa
@@ -35,6 +36,33 @@ const Home = () => {
       return () => clearTimeout(timer);
     }
   }, []);
+  useEffect(() => {
+    const audio = document.getElementById("noel-audio");
+
+    const enableAudio = () => {
+      if (audio) {
+        audio.muted = false;
+        audio.play().catch(() => {});
+      }
+      document.removeEventListener("click", enableAudio);
+    };
+
+    document.addEventListener("click", enableAudio);
+
+    return () => document.removeEventListener("click", enableAudio);
+  }, []);
+
+  useEffect(() => {
+    const audio = document.getElementById("noel-audio");
+    if (!audio) return;
+
+    if (musicOn) {
+      audio.muted = false;
+      audio.play().catch(() => {});
+    } else {
+      audio.pause();
+    }
+  }, [musicOn]);
 
   // Load dịch vụ riêng
   useEffect(() => {
@@ -63,8 +91,33 @@ const Home = () => {
 
   return (
     <div>
+      <style>{`
+        @keyframes pulseGlow {
+          0% {
+            transform: scale(1);
+            box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
+          }
+          50% {
+            transform: scale(1.15);
+            box-shadow: 0 0 22px rgba(255, 140, 0, 0.9);
+          }
+          100% {
+            transform: scale(1);
+            box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
+          }
+        }
+      `}</style>
       <Snow count={40} />
-      {/* <Snowfall
+      {/* Nhạc Noel */}
+      <audio id="noel-audio" autoPlay loop muted>
+        <source src="assets/images/noel.mp3" type="audio/mpeg" />
+      </audio>
+      {/* Nút bật/tắt nhạc */}
+      {/* Nút bật tắt nhạc */}
+      <button onClick={() => setMusicOn(!musicOn)} className="music-toggle-btn">
+        {musicOn ? "🔊" : "🔇"}
+      </button>
+      <Snowfall
         snowflakeCount={50} // giảm số lượng tuyết
         color="white"
         radius={[1, 1]} // giảm kích thước
@@ -78,22 +131,7 @@ const Home = () => {
           pointerEvents: "none",
           zIndex: 9999,
         }}
-      /> */}
-      {/* <Snowfall
-        snowflakeCount={5} // giảm số lượng lớp vàng
-        color="#FFD700"
-        radius={[2, 6]}
-        speed={[0.3, 1]}
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          pointerEvents: "none",
-          zIndex: 9998,
-        }}
-      /> */}
+      />
       {/* Confetti */}
       {confetti && (
         <Confetti

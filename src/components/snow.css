@@ -38,18 +38,18 @@
 /* ---------------------
    HIỆU ỨNG HỘP QUÀ RƠI
 ----------------------*/
-.gift-rain {
+/* .gift-rain {
   position: fixed;
   top: -150px;
-  z-index: 9999;
+  z-index: 999;
   pointer-events: none;
   animation-name: giftFall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  border-radius: 40%; /* 👉 bo góc ảnh */
-}
+  border-radius: 68%; 
+} */
 
-@keyframes giftFall {
+/* @keyframes giftFall {
   0% {
     transform: translateY(0) rotate(0deg);
     opacity: 1;
@@ -58,7 +58,7 @@
     transform: translateY(120vh) rotate(30deg);
     opacity: 0.4;
   }
-}
+} */
 
 /* Santa chạy ngang  */
 /*.santa {
@@ -81,3 +81,48 @@
   }
 }
 */
+.music-toggle-btn {
+  position: fixed;
+  bottom: 120px;
+  right: 40px;
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #ff4d4d, #ff9966);
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: 0.25s ease-in-out;
+}
+
+/* Hiệu ứng khi hover */
+.music-toggle-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Animation rung nhẹ */
+.music-toggle-btn:active {
+  transform: scale(0.9);
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 22px rgba(255, 140, 0, 0.9);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
+  }
+}

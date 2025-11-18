@@ -44,6 +44,23 @@ const LuckyWheel = () => {
 
   return (
     <>
+      {/* ⭐ NHÚNG CSS NGAY TẠI ĐÂY */}
+      <style>{`
+        @keyframes pulseGlow {
+          0% {
+            transform: scale(1);
+            box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
+          }
+          50% {
+            transform: scale(1.15);
+            box-shadow: 0 0 22px rgba(255, 140, 0, 0.9);
+          }
+          100% {
+            transform: scale(1);
+            box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
+          }
+        }
+      `}</style>
       {/* 🎁 Icon góc dưới */}
       <div
         onClick={() => setShowWheel(true)}
@@ -59,7 +76,7 @@ const LuckyWheel = () => {
         }}
       >
         {/* Chữ trên icon */}
-        <div
+        {/* <div
           style={{
             fontSize: "14px",
             fontWeight: "bold",
@@ -70,7 +87,7 @@ const LuckyWheel = () => {
           }}
         >
           Quay thưởng
-        </div>
+        </div> */}
 
         {/* Mũi tên nhấp nháy */}
 
@@ -84,7 +101,8 @@ const LuckyWheel = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            boxShadow: "0 0 10px rgba(0,0,0,0.3)",
+            boxShadow: "0 0 15px rgba(255, 100, 0, 0.6)",
+            animation: "pulseGlow 1.4s infinite ease-in-out",
           }}
         >
           <Gift size={32} color="white" />
