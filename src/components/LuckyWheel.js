@@ -49,15 +49,15 @@ const LuckyWheel = () => {
         @keyframes pulseGlow {
           0% {
             transform: scale(1);
-            box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
           }
           50% {
             transform: scale(1.15);
-            box-shadow: 0 0 22px rgba(255, 140, 0, 0.9);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
           }
           100% {
             transform: scale(1);
-            box-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
           }
         }
       `}</style>
@@ -75,20 +75,6 @@ const LuckyWheel = () => {
           zIndex: 999,
         }}
       >
-        {/* Chữ trên icon */}
-        {/* <div
-          style={{
-            fontSize: "14px",
-            fontWeight: "bold",
-            color: "#ff5e01ff",
-            marginBottom: "5px",
-            textShadow: "1px 1px 2px #000",
-            animation: "bounce 1.5s infinite",
-          }}
-        >
-          Quay thưởng
-        </div> */}
-
         {/* Mũi tên nhấp nháy */}
 
         {/* Icon quà */}
@@ -96,13 +82,13 @@ const LuckyWheel = () => {
           style={{
             backgroundColor: "#ff6600",
             borderRadius: "50%",
-            width: "65px",
-            height: "65px",
+            width: "50px",
+            height: "50px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            boxShadow: "0 0 15px rgba(255, 100, 0, 0.6)",
-            animation: "pulseGlow 1.4s infinite ease-in-out",
+            boxShadow: "0 0 10px rgba(0,0,0,0.2);",
+            animation: "pulseGlow 1.6s infinite ease-in-out",
           }}
         >
           <Gift size={32} color="white" />

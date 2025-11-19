@@ -39,8 +39,8 @@ const FloatingButtons = () => {
       position: "fixed",
       bottom: bottom,
       left: "20px",
-      width: "60px",
-      height: "60px",
+      width: "50px",
+      height: "50px",
       borderRadius: "50%",
       backgroundColor: bgColor,
       display: "flex",
@@ -105,10 +105,10 @@ const FloatingButtons = () => {
         onClick={toggleMusic}
         style={{
           position: "fixed",
-          bottom: "110px",
-          right: "32px", // đặt bên phải
-          width: "60px",
-          height: "60px",
+          bottom: "100px",
+          right: "30px", // đặt bên phải
+          width: "50px",
+          height: "50px",
           borderRadius: "50%",
           backgroundColor: "#ff6600",
           display: "flex",
@@ -116,7 +116,7 @@ const FloatingButtons = () => {
           justifyContent: "center",
           boxShadow: "0 0 12px rgba(0,0,0,0.25)",
           cursor: "pointer",
-          animation: "pulse 1.6s infinite", // thêm hiệu ứng nháy
+          animation: "pulse 1.6s infinite ease-in-out", // thêm hiệu ứng nháy
           zIndex: 9999,
         }}
       >
