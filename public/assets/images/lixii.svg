@@ -1,0 +1,27 @@
+<svg width="120" height="160" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="redGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff3b3b"></stop>
+      <stop offset="100%" stop-color="#b30000"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Thân bao lì xì -->
+  <rect x="10" y="10" width="100" height="140" rx="18" fill="url(#redGrad)" stroke="#ffd700" stroke-width="4"></rect>
+
+  <!-- Nắp bao -->
+  <rect x="10" y="10" width="100" height="32" rx="18" fill="#cc0000" opacity="0.9"></rect>
+
+  <!-- Hoa văn vàng -->
+  <circle cx="60" cy="85" r="26" fill="none" stroke="#ffd700" stroke-width="3"></circle>
+  <circle cx="60" cy="85" r="16" fill="none" stroke="#ffd700" stroke-width="2"></circle>
+
+  <!-- Chữ Lộc -->
+  <text x="60" y="95" text-anchor="middle" font-size="22" font-weight="bold" fill="#ffd700" font-family="serif">
+    LỘC
+  </text>
+
+  <!-- Hạt trang trí -->
+  <circle cx="30" cy="55" r="3" fill="#ffd700"></circle>
+  <circle cx="90" cy="55" r="3" fill="#ffd700"></circle>
+</svg>

@@ -95,13 +95,13 @@ const Home = () => {
         <div style={styles.popupOverlay}>
           <div style={styles.popupContent}>
             <h3 style={{ color: "#d63384", marginBottom: "10px" }}>
-              🎄 Sắp tới Noel rồi 🎅
+              🎄 Tết đến rồi 🧧
             </h3>
             <p style={{ fontSize: "16px", lineHeight: "1.5", color: "#333" }}>
               Bạn có người yêu chưa? <br />
               Nếu chưa thì do bạn chưa đủ sức hút 😎 <br />
-              Hãy đến với <b>Linh Barber</b> làm đẹp để có người yêu đi chơi
-              Noel nhé!
+              Hãy đến với <b>Linh Barber</b> làm đẹp để có người yêu đi chơi Tết
+              nhé!
             </p>
             <button
               onClick={() => {

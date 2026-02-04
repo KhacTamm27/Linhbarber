@@ -15,7 +15,7 @@ const FloatingButtons = () => {
     if (!audio) {
       audio = document.createElement("audio");
       audio.id = "noel-audio";
-      audio.src = "assets/images/noel.mp3";
+      audio.src = "assets/images/tet.mp3";
       audio.loop = true;
       audio.muted = !musicOn;
       document.body.appendChild(audio);

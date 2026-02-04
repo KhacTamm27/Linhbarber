@@ -17,7 +17,7 @@ const Snow = ({ count = 60, giftCount = 6 }) => {
           return (
             <img
               key={i}
-              src="assets/images/snowflake.svg"
+              src="assets/images/lixii.svg"
               className="snow-flake"
               style={{
                 left: `${left}%`,
@@ -26,7 +26,7 @@ const Snow = ({ count = 60, giftCount = 6 }) => {
                 animationDelay: `${delay}s`,
                 animationDuration: `${duration}s`,
               }}
-              alt="snow"
+              alt="lixi"
             />
           );
         })}
